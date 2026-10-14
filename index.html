@@ -1,10 +1,17 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#12171D">
 <title>JINOKA Stock</title>
+<style>html{color-scheme:light}body{margin:0}[hidden]{display:none!important}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Layout: cabeçalho escuro com etiqueta de preço, separadores em linha, conteúdo em cartões sobre fundo azul-cinza frio. */
+/* Layout: cabeçalho escuro com etiqueta de preço, separadores em linha, conteúdo em cartões sobre fundo azul-cinza frio. Telemóvel e computador. */
 :root{
   --font-display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
   --font-body:'Figtree','Segoe UI',system-ui,sans-serif;
@@ -68,9 +75,10 @@ button,input,select,textarea{font:inherit;color:inherit}
 
 /* marca */
 .brand{display:flex;align-items:center;gap:10px}
+.brandbtn{background:none;border:0;padding:0;margin:0;color:inherit;cursor:pointer;text-align:left}
 .brand svg{width:30px;height:30px;flex:none}
-.wordmark{font-family:var(--font-display);font-weight:800;font-size:22px;letter-spacing:.06em;line-height:1}
-.slogan{font-size:12px;opacity:.75;margin-top:2px}
+.wordmark{font-family:var(--font-display);font-weight:800;font-size:22px;letter-spacing:.06em;line-height:1;display:block}
+.slogan{font-size:12px;opacity:.75;margin-top:2px;display:block}
 
 /* acesso */
 .auth{padding-block:40px;padding-inline:16px}
@@ -81,13 +89,12 @@ button,input,select,textarea{font:inherit;color:inherit}
 .authcard .slogan{font-size:14px;color:var(--muted);opacity:1}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
 .pwrow{display:flex;gap:8px}
-.keybox{font-family:var(--font-mono);font-size:19px;letter-spacing:.06em;text-align:center;padding:16px 10px;border:1px dashed var(--line-strong);border-radius:8px;background:var(--surface-2);user-select:all;word-break:break-all}
-.check{display:flex;gap:10px;align-items:flex-start;font-weight:500}
-.check input{width:auto;margin-top:3px}
 
 /* cabeçalho e separadores */
 .top{background:var(--head-bg);color:var(--head-fg)}
 .topin{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
+.topright{display:flex;gap:12px;align-items:center}
+.top .slogan{margin:0}
 .tabs{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
 .tabrow{display:flex;gap:2px;overflow-x:auto;scrollbar-width:thin}
 .tab{flex:none;display:flex;gap:6px;align-items:center;background:none;border:0;border-bottom:3px solid transparent;padding:13px 12px 10px;font-weight:600;color:var(--muted);cursor:pointer}
@@ -108,11 +115,12 @@ main{padding-block:20px 56px;display:grid;gap:18px}
 .field label{font-size:13px;font-weight:600}
 input,select,textarea{width:100%;min-width:0;background:var(--surface);border:1px solid var(--line-strong);border-radius:8px;padding:9px 10px}
 textarea{resize:vertical;min-height:64px}
-input[type=checkbox]{width:auto}
 .form{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));align-items:end}
 .span-all{grid-column:1/-1}
 .err{color:var(--bad);font-size:14px;font-weight:500}
 .actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.actions.left{justify-content:flex-start}
+.clock{font-family:var(--font-mono);font-size:15px;background:var(--surface-2);border-radius:8px;padding:9px 10px}
 
 /* secções */
 .sec{display:grid;gap:12px}
@@ -129,6 +137,7 @@ input[type=checkbox]{width:auto}
 .cols>*{min-width:0}
 .notice{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:10px 14px;font-weight:500}
 .notice.info{background:var(--surface-2);color:var(--ink)}
+.notice.good{background:var(--good-bg);color:var(--good)}
 .preview{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:14px}
 
 /* tabelas */
@@ -139,6 +148,7 @@ td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}
 .num{text-align:right;white-space:nowrap}
 th.num{text-align:right}
 .just{min-width:220px}
+.when{white-space:nowrap}
 tfoot td{font-weight:700;background:var(--surface-2)}
 .empty{padding:22px 14px;text-align:center;color:var(--muted)}
 .chip{display:inline-flex;align-items:center;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap}
@@ -170,162 +180,143 @@ tfoot td{font-weight:700;background:var(--surface-2)}
 .modal{background:var(--surface);color:var(--ink);border-radius:12px;padding:20px;max-width:440px;width:100%;max-height:92%;overflow:auto;display:grid;gap:14px}
 .modal form{display:grid;gap:12px}
 #toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:8px;font-weight:600;z-index:60;max-width:calc(100% - 32px);text-align:center}
+
+/* computador: mais espaço */
+@media (min-width:900px){
+  body{font-size:16px}
+  .wrap{padding-inline:24px}
+  main{padding-block:28px 72px;gap:22px}
+  .tab{padding-inline:16px}
+}
 @media (prefers-reduced-motion:no-preference){ .tab{transition:color .15s,border-color .15s} }
 </style>
+</head>
+<body>
 
-<div id="auth" class="auth" hidden>
-  <div class="authcard">
-    <div class="brand">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 3h13l13 13-13 13L3 16z" style="fill:var(--accent)"/><circle cx="9.5" cy="9.5" r="2.6" style="fill:var(--bg)"/></svg>
-      <div><div class="wordmark">JINOKA</div><div class="slogan">Produtos ao melhor preço</div></div>
-    </div>
-
-    <form id="a-setup" class="card stack" novalidate hidden>
-      <h1>Ativar o acesso</h1>
-      <p class="muted">Só existe uma conta nesta aplicação. O Gmail e a senha que criares agora são os únicos que dão entrada.</p>
-      <div class="field"><label for="s-email">Gmail</label><input id="s-email" name="email" type="email" autocomplete="email" placeholder="nome@gmail.com"></div>
-      <div class="field"><label for="s-pw">Senha</label>
-        <div class="pwrow"><input id="s-pw" name="pw" type="password" autocomplete="new-password"><button type="button" class="btn ghost sm" data-show="s-pw">Mostrar</button></div>
-        <span class="hint">Mínimo de 8 caracteres, com letras e números.</span></div>
-      <div class="field"><label for="s-pw2">Repetir a senha</label><input id="s-pw2" name="pw2" type="password" autocomplete="new-password"></div>
-      <p class="err" id="s-err" role="alert" hidden></p>
-      <button class="btn" type="submit">Ativar acesso</button>
-      <p class="hint">A ativação é feita neste aparelho. O envio de um link de ativação para o Gmail precisa de um servidor de email, que esta versão não tem.</p>
-    </form>
-
-    <div id="a-key" class="card stack" hidden>
-      <h1 id="k-title">Guarda a chave de recuperação</h1>
-      <p class="muted">Se esqueceres a senha, esta chave e o teu Gmail permitem criar uma nova. Aparece só agora. Guarda-a fora deste aparelho, por exemplo num email enviado para ti próprio.</p>
-      <div class="keybox" id="k-box"></div>
-      <button class="btn ghost" type="button" id="k-copy">Copiar chave</button>
-      <label class="check" for="k-ok"><input type="checkbox" id="k-ok"> Guardei a chave num lugar seguro</label>
-      <button class="btn" id="k-go" type="button" disabled>Entrar na JINOKA</button>
-    </div>
-
-    <form id="a-login" class="card stack" novalidate hidden>
-      <h1>Entrar</h1>
-      <p class="muted" id="l-hint"></p>
-      <div class="field"><label for="l-pw">Senha</label>
-        <div class="pwrow"><input id="l-pw" name="pw" type="password" autocomplete="current-password"><button type="button" class="btn ghost sm" data-show="l-pw">Mostrar</button></div></div>
-      <p class="err" id="l-err" role="alert" hidden></p>
-      <button class="btn" type="submit" id="l-go">Entrar</button>
-      <button class="link" type="button" id="l-forgot">Esqueci a minha senha</button>
-    </form>
-
-    <form id="a-recover" class="card stack" novalidate hidden>
-      <h1>Recuperar a senha</h1>
-      <p class="muted">Escreve o Gmail registado e a chave de recuperação que guardaste na ativação.</p>
-      <div class="field"><label for="r-email">Gmail</label><input id="r-email" name="email" type="email" autocomplete="email" placeholder="nome@gmail.com"></div>
-      <div class="field"><label for="r-key">Chave de recuperação</label><input id="r-key" name="key" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="XXXX-XXXX-XXXX-XXXX" style="font-family:var(--font-mono)"></div>
-      <div class="field"><label for="r-pw">Nova senha</label><input id="r-pw" name="pw" type="password" autocomplete="new-password"><span class="hint">Mínimo de 8 caracteres, com letras e números.</span></div>
-      <div class="field"><label for="r-pw2">Repetir a nova senha</label><input id="r-pw2" name="pw2" type="password" autocomplete="new-password"></div>
-      <p class="err" id="r-err" role="alert" hidden></p>
-      <button class="btn" type="submit">Criar nova senha</button>
-      <button class="link" type="button" id="r-back">Voltar</button>
-    </form>
-  </div>
-</div>
+<div id="auth" class="auth" hidden><div class="authcard" id="auth-in"></div></div>
 
 <div id="app" hidden>
-  <header class="top"><div class="wrap topin">
-    <div class="brand">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 3h13l13 13-13 13L3 16z" style="fill:var(--accent)"/><circle cx="9.5" cy="9.5" r="2.6" style="fill:var(--head-bg)"/></svg>
-      <div><div class="wordmark">JINOKA</div><div class="slogan">Produtos ao melhor preço</div></div>
-    </div>
-    <button class="btn ghost sm" type="button" data-act="lock">Bloquear</button>
-  </div></header>
-  <nav class="tabs" aria-label="Secções"><div class="wrap"><div class="tabrow" id="tabs"></div></div></nav>
+  <header class="top"><div class="wrap topin" id="hdr"></div></header>
+  <nav class="tabs" id="nav"><div class="wrap"><div class="tabrow" id="tabs"></div></div></nav>
   <main class="wrap" id="main"></main>
 </div>
 <div id="modal-root"></div>
 <div id="toast" role="status" aria-live="polite" hidden></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
 (function(){
 'use strict';
 var $=function(s,r){return (r||document).querySelector(s);};
+var $$=function(s){return [].slice.call(document.querySelectorAll(s));};
 var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});};
 var uid=function(){return Math.random().toString(36).slice(2,9)+Date.now().toString(36).slice(-3);};
 var sum=function(a,f){return a.reduce(function(t,x){return t+f(x);},0);};
 
-/* ---------- armazenamento (com reserva em memória) ---------- */
-var mem={}, persistent=true;
-try{localStorage.setItem('jk_t','1');localStorage.removeItem('jk_t');}catch(e){persistent=false;}
-function sget(k){try{var v=localStorage.getItem(k);return v;}catch(e){persistent=false;return mem[k]==null?null:mem[k];}}
-function sset(k,v){mem[k]=v;try{localStorage.setItem(k,v);}catch(e){persistent=false;}}
-function readJSON(k){try{var v=sget(k);return v?JSON.parse(v):null;}catch(e){return null;}}
-var AUTH_KEY='jinoka_auth_v1',DATA_KEY='jinoka_data_v1',LOCK_KEY='jinoka_lock_v1';
+/* ---------- ligação ao Supabase ---------- */
+var SUPABASE_URL='https://efcqykkspmujikboeadv.supabase.co';
+var SUPABASE_KEY='sb_publishable_UYLgoo8dta7cKfQCJl62_A_ti3TM2zU';
+/* Depois de criares a tua conta, muda para false para esconder "Criar a conta". */
+var PERMITIR_REGISTO=true;
+var configured=SUPABASE_URL.indexOf('http')===0&&SUPABASE_KEY.indexOf('COLA')!==0;
+var recovering=/type=recovery/.test(location.hash+location.search);
+var sb=(configured&&window.supabase)?window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}):null;
+var HOME=location.origin+location.pathname;
+
+/* ---------- idiomas ---------- */
+var TR=[["Aquisição de mercadoria", "Goods purchase", "Achat de marchandises", "Compra de mercancía"], ["Transporte", "Transport", "Transport", "Transporte"], ["Outro", "Other", "Autre", "Otro"], ["Data e hora do registo (do teu aparelho)", "Date and time of entry (from your device)", "Date et heure de l'enregistrement (de votre appareil)", "Fecha y hora del registro (de tu dispositivo)"], ["Registado em", "Recorded on", "Enregistré le", "Registrado el"], ["Gmail ou senha incorretos.", "Wrong Gmail or password.", "Gmail ou mot de passe incorrect.", "Gmail o contraseña incorrectos."], ["Esta conta ainda não foi ativada. Abre o email com o link de ativação no teu Gmail, ou toca em \"Ativar a conta\" para receber outro link.", "This account has not been activated yet. Open the activation email in your Gmail, or tap \"Activate account\" to get another link.", "Ce compte n'est pas encore activé. Ouvrez l'e-mail d'activation dans votre Gmail, ou touchez « Activer le compte » pour recevoir un autre lien.", "Esta cuenta aún no está activada. Abre el correo de activación en tu Gmail, o toca \"Activar la cuenta\" para recibir otro enlace."], ["Demasiados pedidos. Espera uns minutos e tenta outra vez.", "Too many requests. Wait a few minutes and try again.", "Trop de demandes. Attendez quelques minutes et réessayez.", "Demasiadas solicitudes. Espera unos minutos e inténtalo de nuevo."], ["A nova senha tem de ser diferente da anterior.", "The new password must be different from the previous one.", "Le nouveau mot de passe doit être différent de l'ancien.", "La nueva contraseña debe ser distinta de la anterior."], ["O registo de novas contas está desativado.", "Registration of new accounts is turned off.", "La création de nouveaux comptes est désactivée.", "El registro de nuevas cuentas está desactivado."], ["Sem ligação à internet. Verifica e tenta outra vez.", "No internet connection. Check and try again.", "Pas de connexion internet. Vérifiez et réessayez.", "Sin conexión a internet. Comprueba e inténtalo de nuevo."], ["Não foi possível concluir. Tenta outra vez.", "Could not complete. Try again.", "Impossible de terminer. Réessayez.", "No se pudo completar. Inténtalo de nuevo."], ["Não guardado", "Not saved", "Non enregistré", "No guardado"], ["Não foi possível guardar. Verifica a ligação à internet.", "Could not save. Check your internet connection.", "Impossible d'enregistrer. Vérifiez votre connexion internet.", "No se pudo guardar. Comprueba la conexión a internet."], ["Guardado", "Saved", "Enregistré", "Guardado"], ["A guardar...", "Saving...", "Enregistrement...", "Guardando..."], ["Auriculares Bluetooth", "Bluetooth earphones", "Écouteurs Bluetooth", "Auriculares Bluetooth"], ["Carregador rápido 25W", "25W fast charger", "Chargeur rapide 25W", "Cargador rápido 25W"], ["Relógio digital", "Digital watch", "Montre numérique", "Reloj digital"], ["Capa de telemóvel", "Phone case", "Coque de téléphone", "Funda de móvil"], ["Primeira compra de auriculares, carregadores e relógios", "First purchase of earphones, chargers and watches", "Premier achat d'écouteurs, chargeurs et montres", "Primera compra de auriculares, cargadores y relojes"], ["Frete do fornecedor até Luanda", "Supplier freight to Luanda", "Fret du fournisseur jusqu'à Luanda", "Flete del proveedor hasta Luanda"], ["Segunda compra de mercadoria", "Second goods purchase", "Deuxième achat de marchandises", "Segunda compra de mercancía"], ["Frete da segunda compra", "Freight for the second purchase", "Fret du deuxième achat", "Flete de la segunda compra"], ["Sacos e etiquetas para embalar encomendas das redes sociais", "Bags and labels to pack social media orders", "Sacs et étiquettes pour emballer les commandes des réseaux sociaux", "Bolsas y etiquetas para empaquetar pedidos de redes sociales"], ["Capital de exemplo", "Example capital", "Capital d'exemple", "Capital de ejemplo"], ["(produto apagado)", "(deleted product)", "(produit supprimé)", "(producto eliminado)"], ["Atualizar a página", "Refresh the page", "Actualiser la page", "Actualizar la página"], ["Produtos ao melhor preço", "Products at the best price", "Des produits au meilleur prix", "Productos al mejor precio"], ["Terminar sessão", "Sign out", "Se déconnecter", "Cerrar sesión"], ["Secções", "Sections", "Sections", "Secciones"], ["Mostrar", "Show", "Afficher", "Mostrar"], ["Mínimo de 8 caracteres, com letras e números.", "At least 8 characters, with letters and numbers.", "Au moins 8 caractères, avec des lettres et des chiffres.", "Mínimo 8 caracteres, con letras y números."], ["Entrar", "Sign in", "Se connecter", "Entrar"], ["Escreve o Gmail e a senha da tua conta JINOKA.", "Enter the Gmail and password of your JINOKA account.", "Saisissez le Gmail et le mot de passe de votre compte JINOKA.", "Escribe el Gmail y la contraseña de tu cuenta JINOKA."], ["Senha", "Password", "Mot de passe", "Contraseña"], ["Esqueci a minha senha", "I forgot my password", "J'ai oublié mon mot de passe", "Olvidé mi contraseña"], ["Ativar a conta", "Activate account", "Activer le compte", "Activar la cuenta"], ["Criar a conta", "Create account", "Créer le compte", "Crear la cuenta"], ["Vamos enviar um link de ativação para o teu Gmail. A conta só fica ativa depois de carregares nesse link.", "We will send an activation link to your Gmail. The account only becomes active after you tap that link.", "Nous enverrons un lien d'activation à votre Gmail. Le compte n'est actif qu'après avoir touché ce lien.", "Enviaremos un enlace de activación a tu Gmail. La cuenta solo queda activa después de pulsar ese enlace."], ["Repetir a senha", "Repeat password", "Répéter le mot de passe", "Repetir la contraseña"], ["Criar conta e enviar link", "Create account and send link", "Créer le compte et envoyer le lien", "Crear cuenta y enviar enlace"], ["Já tenho conta", "I already have an account", "J'ai déjà un compte", "Ya tengo cuenta"], ["Verifica o teu Gmail", "Check your Gmail", "Vérifiez votre Gmail", "Revisa tu Gmail"], ["Enviámos um link de ativação para", "We sent an activation link to", "Nous avons envoyé un lien d'activation à", "Enviamos un enlace de activación a"], ["Abre o email, carrega no link e a conta fica ativa. Se não encontrares, procura na pasta Spam.", "Open the email and tap the link and the account becomes active. If you can't find it, check the Spam folder.", "Ouvrez l'e-mail et touchez le lien : le compte devient actif. Si vous ne le trouvez pas, regardez dans le dossier Spam.", "Abre el correo y pulsa el enlace; la cuenta queda activa. Si no lo encuentras, mira en la carpeta Spam."], ["Já ativei, quero entrar", "I have activated, I want to sign in", "J'ai activé, je veux me connecter", "Ya activé, quiero entrar"], ["Escreve o Gmail da conta. Vamos enviar outra vez o link de ativação.", "Enter the account Gmail. We will send the activation link again.", "Saisissez le Gmail du compte. Nous renverrons le lien d'activation.", "Escribe el Gmail de la cuenta. Enviaremos otra vez el enlace de activación."], ["Enviar link de ativação", "Send activation link", "Envoyer le lien d'activation", "Enviar enlace de activación"], ["Voltar", "Back", "Retour", "Volver"], ["Recuperar a senha", "Recover password", "Récupérer le mot de passe", "Recuperar la contraseña"], ["Escreve o Gmail da conta. Vamos enviar um link para criares uma nova senha.", "Enter the account Gmail. We will send a link to create a new password.", "Saisissez le Gmail du compte. Nous enverrons un lien pour créer un nouveau mot de passe.", "Escribe el Gmail de la cuenta. Enviaremos un enlace para crear una nueva contraseña."], ["Enviar link", "Send link", "Envoyer le lien", "Enviar enlace"], ["Nova senha", "New password", "Nouveau mot de passe", "Nueva contraseña"], ["Escolhe uma senha nova para a tua conta.", "Choose a new password for your account.", "Choisissez un nouveau mot de passe pour votre compte.", "Elige una nueva contraseña para tu cuenta."], ["Repetir a nova senha", "Repeat the new password", "Répéter le nouveau mot de passe", "Repetir la nueva contraseña"], ["Guardar nova senha", "Save new password", "Enregistrer le nouveau mot de passe", "Guardar nueva contraseña"], ["A verificar...", "Checking...", "Vérification...", "Verificando..."], ["Não foi possível carregar os dados. Verifica a ligação e tenta outra vez.", "Could not load the data. Check the connection and try again.", "Impossible de charger les données. Vérifiez la connexion et réessayez.", "No se pudieron cargar los datos. Comprueba la conexión e inténtalo de nuevo."], ["Cancelar", "Cancel", "Annuler", "Cancelar"], ["Guardar", "Save", "Enregistrer", "Guardar"], ["Ocorreu um erro. Tenta outra vez.", "An error occurred. Try again.", "Une erreur s'est produite. Réessayez.", "Ocurrió un error. Inténtalo de nuevo."], ["Apagar", "Delete", "Supprimer", "Eliminar"], ["Estás a ver dados de exemplo da JINOKA para perceber como a aplicação funciona.", "You are seeing JINOKA example data to understand how the app works.", "Vous voyez des données d'exemple de JINOKA pour comprendre le fonctionnement de l'application.", "Estás viendo datos de ejemplo de JINOKA para entender cómo funciona la aplicación."], ["Apagar exemplos e começar", "Delete examples and start", "Supprimer les exemples et commencer", "Eliminar ejemplos y empezar"], ["Esgotado", "Sold out", "Épuisé", "Agotado"], ["Stock baixo", "Low stock", "Stock bas", "Stock bajo"], ["Normal", "Normal", "Normal", "Normal"], ["{0} em stock", "{0} in stock", "{0} en stock", "{0} en stock"], ["Ainda não fizeste uma cópia de segurança esta semana.", "You haven't made a backup this week.", "Vous n'avez pas fait de sauvegarde cette semaine.", "Aún no has hecho una copia de seguridad esta semana."], ["Ir para as cópias", "Go to backups", "Aller aux sauvegardes", "Ir a las copias"], ["Dinheiro em caixa", "Cash on hand", "Argent en caisse", "Dinero en caja"], ["{0} de capital + {1} vendidos − {2} gastos", "{0} capital + {1} sold − {2} spent", "{0} de capital + {1} vendus − {2} dépensés", "{0} de capital + {1} vendidos − {2} gastados"], ["Total vendido", "Total sold", "Total vendu", "Total vendido"], ["Total gasto", "Total spent", "Total dépensé", "Total gastado"], ["Lucro bruto das vendas", "Gross profit from sales", "Bénéfice brut des ventes", "Beneficio bruto de las ventas"], ["Crescimento do património", "Net worth growth", "Croissance du patrimoine", "Crecimiento del patrimonio"], ["Stock em alerta", "Stock on alert", "Stock en alerte", "Stock en alerta"], ["Ver tudo", "See all", "Tout voir", "Ver todo"], ["Nenhum produto em alerta.", "No products on alert.", "Aucun produit en alerte.", "Ningún producto en alerta."], ["Últimas vendas", "Latest sales", "Dernières ventes", "Últimas ventas"], ["Data", "Date", "Date", "Fecha"], ["Produto", "Product", "Produit", "Producto"], ["Qtd", "Qty", "Qté", "Cant."], ["Total", "Total", "Total", "Total"], ["Diferença", "Difference", "Écart", "Diferencia"], ["Ainda não há vendas.", "There are no sales yet.", "Il n'y a pas encore de ventes.", "Aún no hay ventas."], ["Capital inicial", "Initial capital", "Capital initial", "Capital inicial"], ["Valor (Kz)", "Amount (Kz)", "Montant (Kz)", "Valor (Kz)"], ["Origem (opcional)", "Source (optional)", "Origine (facultatif)", "Origen (opcional)"], ["Guardar capital", "Save capital", "Enregistrer le capital", "Guardar capital"], ["Registar gasto", "Record expense", "Enregistrer une dépense", "Registrar gasto"], ["Tipo de gasto", "Expense type", "Type de dépense", "Tipo de gasto"], ["Justificação", "Justification", "Justification", "Justificación"], ["(opcional)", "(optional)", "(facultatif)", "(opcional)"], ["Para que serviu este dinheiro?", "What was this money used for?", "À quoi cet argent a-t-il servi ?", "¿Para qué sirvió este dinero?"], ["Os gastos em \"Outro\" têm de ter justificação.", "Expenses under \"Other\" must have a justification.", "Les dépenses « Autre » doivent être justifiées.", "Los gastos en \"Otro\" deben tener justificación."], ["Gastos registados", "Recorded expenses", "Dépenses enregistrées", "Gastos registrados"], ["Tipo", "Type", "Type", "Tipo"], ["Valor", "Amount", "Montant", "Valor"], ["Ainda não há gastos registados.", "There are no recorded expenses yet.", "Il n'y a pas encore de dépenses enregistrées.", "Aún no hay gastos registrados."], ["Repor", "Restock", "Réapprovisionner", "Reponer"], ["Editar", "Edit", "Modifier", "Editar"], ["Novo produto", "New product", "Nouveau produit", "Nuevo producto"], ["Nome do produto", "Product name", "Nom du produit", "Nombre del producto"], ["Quantidade comprada", "Quantity bought", "Quantité achetée", "Cantidad comprada"], ["Preço real (custo por unidade)", "Real price (cost per unit)", "Prix réel (coût par unité)", "Precio real (costo por unidad)"], ["Preço de venda previsto", "Expected selling price", "Prix de vente prévu", "Precio de venta previsto"], ["Avisar quando restarem", "Alert when remaining", "Alerter quand il reste", "Avisar cuando queden"], ["Adicionar produto", "Add product", "Ajouter le produit", "Añadir producto"], ["O preço real serve para calcular o lucro de cada venda. O dinheiro gasto na compra regista-se em Capital e gastos.", "The real price is used to calculate the profit on each sale. The money spent on the purchase is recorded in Capital and expenses.", "Le prix réel sert à calculer le bénéfice de chaque vente. L'argent dépensé pour l'achat s'enregistre dans Capital et dépenses.", "El precio real sirve para calcular la ganancia de cada venta. El dinero gastado en la compra se registra en Capital y gastos."], ["Stock", "Stock", "Stock", "Stock"], ["Comprado", "Bought", "Acheté", "Comprado"], ["Vendido", "Sold", "Vendu", "Vendido"], ["Em stock", "In stock", "En stock", "En stock"], ["Estado", "Status", "État", "Estado"], ["Preço real", "Real price", "Prix réel", "Precio real"], ["Venda prevista", "Expected sale", "Vente prévue", "Venta prevista"], ["Margem", "Margin", "Marge", "Margen"], ["Ainda não há produtos. Adiciona o primeiro acima.", "There are no products yet. Add the first one above.", "Il n'y a pas encore de produits. Ajoutez le premier ci-dessus.", "Aún no hay productos. Añade el primero arriba."], ["Quantidade", "Quantity", "Quantité", "Cantidad"], ["Preço real do produto (por unidade)", "Product real price (per unit)", "Prix réel du produit (par unité)", "Precio real del producto (por unidad)"], ["Preço a que vendeste (por unidade)", "Price you sold at (per unit)", "Prix de vente (par unité)", "Precio al que vendiste (por unidad)"], ["Escolhe o produto e confirma os preços para ver a diferença.", "Choose the product and confirm the prices to see the difference.", "Choisissez le produit et confirmez les prix pour voir l'écart.", "Elige el producto y confirma los precios para ver la diferencia."], ["Registar venda", "Record sale", "Enregistrer la vente", "Registrar venta"], ["Cria primeiro um produto na aba Produtos para poder registar vendas.", "First create a product in the Products tab so you can record sales.", "Créez d'abord un produit dans l'onglet Produits pour pouvoir enregistrer des ventes.", "Crea primero un producto en la pestaña Productos para poder registrar ventas."], ["Nova venda", "New sale", "Nouvelle vente", "Nueva venta"], ["Vendas registadas", "Recorded sales", "Ventes enregistrées", "Ventas registradas"], ["Preço vendido", "Sold price", "Prix vendu", "Precio vendido"], ["Lucro", "Profit", "Bénéfice", "Ganancia"], ["Ainda não há vendas registadas.", "There are no recorded sales yet.", "Il n'y a pas encore de ventes enregistrées.", "Aún no hay ventas registradas."], ["Diferença = (preço vendido − preço real) ÷ preço real. Valores negativos significam venda abaixo do custo.", "Difference = (sold price − real price) ÷ real price. Negative values mean a sale below cost.", "Écart = (prix vendu − prix réel) ÷ prix réel. Les valeurs négatives signifient une vente sous le coût.", "Diferencia = (precio vendido − precio real) ÷ precio real. Los valores negativos significan venta por debajo del costo."], ["Capital inicial (dinheiro base)", "Initial capital (base money)", "Capital initial (argent de base)", "Capital inicial (dinero base)"], ["Gasto em mercadoria", "Spent on goods", "Dépensé en marchandises", "Gastado en mercancía"], ["Gasto em transporte", "Spent on transport", "Dépensé en transport", "Gastado en transporte"], ["Outros gastos", "Other expenses", "Autres dépenses", "Otros gastos"], ["Para além da caixa", "Beyond cash", "Au-delà de la caisse", "Además de la caja"], ["Stock restante ao preço real", "Remaining stock at real price", "Stock restant au prix réel", "Stock restante al precio real"], ["Caixa + stock ao preço real", "Cash + stock at real price", "Caisse + stock au prix réel", "Caja + stock al precio real"], ["Crescimento da JINOKA", "JINOKA growth", "Croissance de JINOKA", "Crecimiento de JINOKA"], ["Crescimento da caixa", "Cash growth", "Croissance de la caisse", "Crecimiento de la caja"], ["Vendas vs mês anterior", "Sales vs previous month", "Ventes vs mois précédent", "Ventas vs mes anterior"], ["Lucro bruto", "Gross profit", "Bénéfice brut", "Beneficio bruto"], ["Caixa = capital + vendas − gastos. Património = caixa + stock restante ao preço real. Ambos comparados com o capital inicial.", "Cash = capital + sales − expenses. Net worth = cash + remaining stock at real price. Both compared with the initial capital.", "Caisse = capital + ventes − dépenses. Patrimoine = caisse + stock restant au prix réel. Les deux sont comparés au capital initial.", "Caja = capital + ventas − gastos. Patrimonio = caja + stock restante al precio real. Ambos comparados con el capital inicial."], ["Dinheiro em caixa ao longo do tempo", "Cash on hand over time", "Argent en caisse au fil du temps", "Dinero en caja a lo largo del tiempo"], ["Mês a mês", "Month by month", "Mois par mois", "Mes a mes"], ["Mês", "Month", "Mois", "Mes"], ["Gastos", "Expenses", "Dépenses", "Gastos"], ["Ainda não há movimentos.", "There are no transactions yet.", "Il n'y a pas encore de mouvements.", "Aún no hay movimientos."], ["Ainda não há movimentos para desenhar.", "There are no transactions to plot yet.", "Il n'y a pas encore de mouvements à tracer.", "Aún no hay movimientos para dibujar."], ["sem unidades", "no units", "aucune unité", "sin unidades"], ["{0} em stock, mínimo {1}", "{0} in stock, minimum {1}", "{0} en stock, minimum {1}", "{0} en stock, mínimo {1}"], ["Total a arrecadar", "Total to collect", "Total à encaisser", "Total a recaudar"], ["Alertas de stock", "Stock alerts", "Alertes de stock", "Alertas de stock"], ["Todos os produtos têm stock acima do mínimo.", "All products have stock above the minimum.", "Tous les produits ont un stock supérieur au minimum.", "Todos los productos tienen stock por encima del mínimo."], ["O que o stock restante vai render", "What the remaining stock will earn", "Ce que rapportera le stock restant", "Lo que rendirá el stock restante"], ["Produtos em alerta", "Products on alert", "Produits en alerte", "Productos en alerta"], ["A arrecadar com todo o stock", "To collect from all stock", "À encaisser avec tout le stock", "A recaudar con todo el stock"], ["A arrecadar só dos produtos em alerta", "To collect from alert products only", "À encaisser des seuls produits en alerte", "A recaudar solo de los productos en alerta"], ["Lucro previsto do stock", "Expected profit from stock", "Bénéfice prévu du stock", "Ganancia prevista del stock"], ["Mínimo", "Minimum", "Minimum", "Mínimo"], ["A arrecadar", "To collect", "À encaisser", "A recaudar"], ["Lucro previsto", "Expected profit", "Bénéfice prévu", "Ganancia prevista"], ["Ainda não há produtos.", "There are no products yet.", "Il n'y a pas encore de produits.", "Aún no hay productos."], ["A arrecadar = unidades em stock × preço de venda previsto de cada produto.", "To collect = units in stock × expected selling price of each product.", "À encaisser = unités en stock × prix de vente prévu de chaque produit.", "A recaudar = unidades en stock × precio de venta previsto de cada producto."], ["nunca", "never", "jamais", "nunca"], ["Conta ativada em {0}", "Account activated on {0}", "Compte activé le {0}", "Cuenta activada el {0}"], ["Conta ainda não confirmada.", "Account not confirmed yet.", "Compte pas encore confirmé.", "Cuenta aún no confirmada."], ["Idioma", "Language", "Langue", "Idioma"], ["Idioma da aplicação", "App language", "Langue de l'application", "Idioma de la aplicación"], ["Conta", "Account", "Compte", "Cuenta"], ["Alterar a senha", "Change password", "Changer le mot de passe", "Cambiar la contraseña"], ["Senha atual", "Current password", "Mot de passe actuel", "Contraseña actual"], ["Alterar senha", "Change password", "Changer le mot de passe", "Cambiar contraseña"], ["Cópia de segurança", "Backup", "Sauvegarde", "Copia de seguridad"], ["Os dados ficam guardados na tua conta, na nuvem, e abrem em qualquer aparelho. Mesmo assim, guarda uma cópia de vez em quando.", "Your data is saved in your account, in the cloud, and opens on any device. Still, keep a copy now and then.", "Vos données sont enregistrées dans votre compte, dans le cloud, et s'ouvrent sur n'importe quel appareil. Gardez quand même une copie de temps en temps.", "Los datos se guardan en tu cuenta, en la nube, y se abren en cualquier dispositivo. Aun así, guarda una copia de vez en cuando."], ["Última cópia", "Last backup", "Dernière sauvegarde", "Última copia"], ["Guardar no Google Drive", "Save to Google Drive", "Enregistrer sur Google Drive", "Guardar en Google Drive"], ["Guardar no aparelho", "Save to device", "Enregistrer sur l'appareil", "Guardar en el dispositivo"], ["Restaurar cópia", "Restore backup", "Restaurer la sauvegarde", "Restaurar copia"], ["Para guardar no Drive: toca em \"Guardar no Google Drive\", escolhe Drive na lista que abre, depois a conta Google e a pasta.", "To save to Drive: tap \"Save to Google Drive\", choose Drive in the list that opens, then the Google account and the folder.", "Pour enregistrer sur Drive : touchez « Enregistrer sur Google Drive », choisissez Drive dans la liste qui s'ouvre, puis le compte Google et le dossier.", "Para guardar en Drive: toca \"Guardar en Google Drive\", elige Drive en la lista que se abre, luego la cuenta de Google y la carpeta."], ["Apagar tudo", "Delete everything", "Tout supprimer", "Eliminar todo"], ["Apaga produtos, vendas, gastos e capital. A conta e a senha mantêm-se.", "Deletes products, sales, expenses and capital. The account and password remain.", "Supprime produits, ventes, dépenses et capital. Le compte et le mot de passe restent.", "Elimina productos, ventas, gastos y capital. La cuenta y la contraseña se mantienen."], ["Apagar todos os dados", "Delete all data", "Supprimer toutes les données", "Eliminar todos los datos"], ["Painel", "Dashboard", "Tableau de bord", "Panel"], ["Capital e gastos", "Capital and expenses", "Capital et dépenses", "Capital y gastos"], ["Produtos", "Products", "Produits", "Productos"], ["Vendas", "Sales", "Ventes", "Ventas"], ["Crescimento", "Growth", "Croissance", "Crecimiento"], ["Caixa", "Cash", "Caisse", "Caja"], ["Alertas", "Alerts", "Alertes", "Alertas"], ["Definições", "Settings", "Paramètres", "Ajustes"], ["{0} em alerta", "{0} on alert", "{0} en alerte", "{0} en alerta"], ["Confirma o preço real e o preço de venda para ver a diferença.", "Confirm the real price and the selling price to see the difference.", "Confirmez le prix réel et le prix de vente pour voir l'écart.", "Confirma el precio real y el precio de venta para ver la diferencia."], ["por unidade", "per unit", "par unité", "por unidad"], ["Lucro desta venda", "Profit on this sale", "Bénéfice de cette vente", "Ganancia de esta venta"], ["Escreve o Gmail e a senha.", "Enter the Gmail and password.", "Saisissez le Gmail et le mot de passe.", "Escribe el Gmail y la contraseña."], ["A entrar...", "Signing in...", "Connexion...", "Entrando..."], ["Escreve um endereço Gmail válido, terminado em @gmail.com.", "Enter a valid Gmail address ending in @gmail.com.", "Saisissez une adresse Gmail valide se terminant par @gmail.com.", "Escribe una dirección Gmail válida que termine en @gmail.com."], ["A senha precisa de pelo menos 8 caracteres, com letras e números.", "The password needs at least 8 characters, with letters and numbers.", "Le mot de passe doit comporter au moins 8 caractères, avec des lettres et des chiffres.", "La contraseña necesita al menos 8 caracteres, con letras y números."], ["As duas senhas não são iguais.", "The two passwords do not match.", "Les deux mots de passe ne sont pas identiques.", "Las dos contraseñas no coinciden."], ["A enviar...", "Sending...", "Envoi...", "Enviando..."], ["Este Gmail já tem conta. Entra ou recupera a senha.", "This Gmail already has an account. Sign in or recover the password.", "Ce Gmail a déjà un compte. Connectez-vous ou récupérez le mot de passe.", "Este Gmail ya tiene cuenta. Entra o recupera la contraseña."], ["Escreve o Gmail da conta.", "Enter the account Gmail.", "Saisissez le Gmail du compte.", "Escribe el Gmail de la cuenta."], ["Se esta conta ainda não estiver ativada, enviámos um novo link de ativação para o teu Gmail. Procura também no Spam.", "If this account is not activated yet, we sent a new activation link to your Gmail. Also check Spam.", "Si ce compte n'est pas encore activé, nous avons envoyé un nouveau lien d'activation à votre Gmail. Regardez aussi dans le Spam.", "Si esta cuenta aún no está activada, enviamos un nuevo enlace de activación a tu Gmail. Mira también en Spam."], ["Se este Gmail tiver conta, enviámos um link para criares uma nova senha. Procura também no Spam.", "If this Gmail has an account, we sent a link to create a new password. Also check Spam.", "Si ce Gmail a un compte, nous avons envoyé un lien pour créer un nouveau mot de passe. Regardez aussi dans le Spam.", "Si este Gmail tiene cuenta, enviamos un enlace para crear una nueva contraseña. Mira también en Spam."], ["Senha alterada.", "Password changed.", "Mot de passe modifié.", "Contraseña cambiada."], ["Escreve o valor do capital inicial.", "Enter the initial capital amount.", "Saisissez le montant du capital initial.", "Escribe el valor del capital inicial."], ["Escolhe a data do capital.", "Choose the capital date.", "Choisissez la date du capital.", "Elige la fecha del capital."], ["Capital guardado.", "Capital saved.", "Capital enregistré.", "Capital guardado."], ["Escreve o valor gasto.", "Enter the amount spent.", "Saisissez le montant dépensé.", "Escribe el valor gastado."], ["Escolhe a data do gasto.", "Choose the expense date.", "Choisissez la date de la dépense.", "Elige la fecha del gasto."], ["Gastos do tipo \"Outro\" precisam de justificação.", "Expenses of type \"Other\" need a justification.", "Les dépenses de type « Autre » nécessitent une justification.", "Los gastos de tipo \"Otro\" necesitan justificación."], ["Gasto registado.", "Expense recorded.", "Dépense enregistrée.", "Gasto registrado."], ["Escreve o nome do produto.", "Enter the product name.", "Saisissez le nom du produit.", "Escribe el nombre del producto."], ["Já existe um produto com este nome.", "A product with this name already exists.", "Un produit portant ce nom existe déjà.", "Ya existe un producto con este nombre."], ["A quantidade comprada tem de ser pelo menos 1.", "The quantity bought must be at least 1.", "La quantité achetée doit être d'au moins 1.", "La cantidad comprada debe ser al menos 1."], ["Escreve o preço real por unidade.", "Enter the real price per unit.", "Saisissez le prix réel par unité.", "Escribe el precio real por unidad."], ["Escreve o preço de venda previsto.", "Enter the expected selling price.", "Saisissez le prix de vente prévu.", "Escribe el precio de venta previsto."], ["Produto adicionado.", "Product added.", "Produit ajouté.", "Producto añadido."], ["Escolhe o produto vendido.", "Choose the product sold.", "Choisissez le produit vendu.", "Elige el producto vendido."], ["Escolhe a data da venda.", "Choose the sale date.", "Choisissez la date de la vente.", "Elige la fecha de la venta."], ["A quantidade tem de ser pelo menos 1.", "The quantity must be at least 1.", "La quantité doit être d'au moins 1.", "La cantidad debe ser al menos 1."], ["Só há {0} unidades de \"{1}\" em stock.", "There are only {0} units of \"{1}\" in stock.", "Il n'y a que {0} unités de « {1} » en stock.", "Solo hay {0} unidades de \"{1}\" en stock."], ["Escreve o preço real do produto.", "Enter the product's real price.", "Saisissez le prix réel du produit.", "Escribe el precio real del producto."], ["Escreve o preço a que vendeste.", "Enter the price you sold at.", "Saisissez le prix de vente.", "Escribe el precio al que vendiste."], ["Venda registada ({0} sobre o preço real).", "Sale recorded ({0} over the real price).", "Vente enregistrée ({0} par rapport au prix réel).", "Venta registrada ({0} sobre el precio real)."], ["A nova senha precisa de pelo menos 8 caracteres, com letras e números.", "The new password needs at least 8 characters, with letters and numbers.", "Le nouveau mot de passe doit comporter au moins 8 caractères, avec des lettres et des chiffres.", "La nueva contraseña necesita al menos 8 caracteres, con letras y números."], ["As duas senhas novas não são iguais.", "The two new passwords do not match.", "Les deux nouveaux mots de passe ne sont pas identiques.", "Las dos contraseñas nuevas no coinciden."], ["A senha atual está incorreta.", "The current password is incorrect.", "Le mot de passe actuel est incorrect.", "La contraseña actual es incorrecta."], ["Cópia guardada no aparelho.", "Backup saved to the device.", "Sauvegarde enregistrée sur l'appareil.", "Copia guardada en el dispositivo."], ["Copiar os dados", "Copy the data", "Copier les données", "Copiar los datos"], ["Copia este texto e guarda-o numa nota.", "Copy this text and save it in a note.", "Copiez ce texte et gardez-le dans une note.", "Copia este texto y guárdalo en una nota."], ["Fechar", "Close", "Fermer", "Cerrar"], ["Cópia de segurança da JINOKA", "JINOKA backup", "Sauvegarde JINOKA", "Copia de seguridad de JINOKA"], ["Cópia enviada.", "Backup sent.", "Sauvegarde envoyée.", "Copia enviada."], ["Este aparelho não permite partilhar ficheiros. A guardar no aparelho.", "This device does not allow sharing files. Saving to the device.", "Cet appareil ne permet pas de partager des fichiers. Enregistrement sur l'appareil.", "Este dispositivo no permite compartir archivos. Guardando en el dispositivo."], ["Apagar os exemplos", "Delete the examples", "Supprimer les exemples", "Eliminar los ejemplos"], ["Isto remove o capital, os produtos, as vendas e os gastos de exemplo. Os teus registos ficam.", "This removes the example capital, products, sales and expenses. Your own records stay.", "Cela supprime le capital, les produits, les ventes et les dépenses d'exemple. Vos enregistrements restent.", "Esto elimina el capital, los productos, las ventas y los gastos de ejemplo. Tus registros se mantienen."], ["Exemplos apagados.", "Examples deleted.", "Exemples supprimés.", "Ejemplos eliminados."], ["Apagar exemplos", "Delete examples", "Supprimer les exemples", "Eliminar ejemplos"], ["Apagar gasto", "Delete expense", "Supprimer la dépense", "Eliminar gasto"], ["Este gasto deixa de contar para a caixa.", "This expense will no longer count toward cash.", "Cette dépense ne comptera plus dans la caisse.", "Este gasto deja de contar para la caja."], ["Apagar venda", "Delete sale", "Supprimer la vente", "Eliminar venta"], ["As unidades voltam ao stock e o valor sai do total vendido.", "The units go back to stock and the amount leaves the total sold.", "Les unités retournent en stock et le montant sort du total vendu.", "Las unidades vuelven al stock y el valor sale del total vendido."], ["Este produto tem vendas registadas e não pode ser apagado.", "This product has recorded sales and cannot be deleted.", "Ce produit a des ventes enregistrées et ne peut pas être supprimé.", "Este producto tiene ventas registradas y no se puede eliminar."], ["Apagar produto", "Delete product", "Supprimer le produit", "Eliminar producto"], ["\"{0}\" deixa de existir no stock.", "\"{0}\" will no longer exist in stock.", "« {0} » n'existera plus en stock.", "\"{0}\" deja de existir en el stock."], ["Repor stock de {0}", "Restock {0}", "Réapprovisionner {0}", "Reponer stock de {0}"], ["Em stock agora: {0} unidades.", "In stock now: {0} units.", "En stock actuellement : {0} unités.", "En stock ahora: {0} unidades."], ["Unidades a acrescentar", "Units to add", "Unités à ajouter", "Unidades a añadir"], ["Escreve quantas unidades chegaram.", "Enter how many units arrived.", "Saisissez combien d'unités sont arrivées.", "Escribe cuántas unidades llegaron."], ["Stock reposto.", "Stock replenished.", "Stock réapprovisionné.", "Stock repuesto."], ["Editar produto", "Edit product", "Modifier le produit", "Editar producto"], ["Nome", "Name", "Nom", "Nombre"], ["Quantidade total comprada", "Total quantity bought", "Quantité totale achetée", "Cantidad total comprada"], ["Mudar o preço real não altera vendas já registadas.", "Changing the real price does not alter sales already recorded.", "Modifier le prix réel ne change pas les ventes déjà enregistrées.", "Cambiar el precio real no altera las ventas ya registradas."], ["A quantidade comprada não pode ser menor que as {0} unidades já vendidas.", "The quantity bought cannot be less than the {0} units already sold.", "La quantité achetée ne peut pas être inférieure aux {0} unités déjà vendues.", "La cantidad comprada no puede ser menor que las {0} unidades ya vendidas."], ["Confirma os preços.", "Confirm the prices.", "Confirmez les prix.", "Confirma los precios."], ["Produto atualizado.", "Product updated.", "Produit mis à jour.", "Producto actualizado."], ["Esta ação não pode ser desfeita. Produtos, vendas, gastos e capital são apagados. A conta mantém-se.", "This action cannot be undone. Products, sales, expenses and capital are deleted. The account remains.", "Cette action est irréversible. Produits, ventes, dépenses et capital sont supprimés. Le compte reste.", "Esta acción no se puede deshacer. Se eliminan productos, ventas, gastos y capital. La cuenta se mantiene."], ["Dados apagados.", "Data deleted.", "Données supprimées.", "Datos eliminados."], ["Ocultar", "Hide", "Masquer", "Ocultar"], ["(obrigatória)", "(required)", "(obligatoire)", "(obligatoria)"], ["Os dados atuais são substituídos pelos da cópia ({0} produtos, {1} vendas, {2} gastos).", "Current data is replaced by the backup's ({0} products, {1} sales, {2} expenses).", "Les données actuelles sont remplacées par celles de la sauvegarde ({0} produits, {1} ventes, {2} dépenses).", "Los datos actuales se sustituyen por los de la copia ({0} productos, {1} ventas, {2} gastos)."], ["Cópia restaurada.", "Backup restored.", "Sauvegarde restaurée.", "Copia restaurada."], ["Restaurar", "Restore", "Restaurer", "Restaurar"], ["Este ficheiro não é uma cópia da JINOKA.", "This file is not a JINOKA backup.", "Ce fichier n'est pas une sauvegarde JINOKA.", "Este archivo no es una copia de JINOKA."], ["Falta ligar o servidor", "The server is not connected", "Le serveur n'est pas connecté", "Falta conectar el servidor"], ["Abre o ficheiro index.html e cola o URL e a chave do teu projeto Supabase no início do código.", "Open the index.html file and paste your Supabase project URL and key at the start of the code.", "Ouvrez le fichier index.html et collez l'URL et la clé de votre projet Supabase au début du code.", "Abre el archivo index.html y pega la URL y la clave de tu proyecto Supabase al inicio del código."], ["O link expirou ou já foi usado. Pede um novo.", "The link has expired or was already used. Request a new one.", "Le lien a expiré ou a déjà été utilisé. Demandez-en un nouveau.", "El enlace expiró o ya se usó. Pide uno nuevo."], ["O link expirou. Pede um novo.", "The link has expired. Request a new one.", "Le lien a expiré. Demandez-en un nouveau.", "El enlace expiró. Pide uno nuevo."]];
+var LANGS=[['pt','Português'],['en','English'],['fr','Français'],['es','Español']];
+var LOC={pt:'pt-PT',en:'en-GB',fr:'fr-FR',es:'es-ES'};
+var LANG='pt',TRMAP={en:{},fr:{},es:{}};
+TR.forEach(function(r){TRMAP.en[r[0]]=r[1];TRMAP.fr[r[0]]=r[2];TRMAP.es[r[0]]=r[3];});
+function T(s,a){
+  var m=(LANG!=='pt'&&TRMAP[LANG]&&TRMAP[LANG][s])||s;
+  if(a)m=m.replace(/\{(\d+)\}/g,function(_,i){return a[+i];});
+  return m;
+}
+var nf,pf;
+function setLang(l){
+  if(!LOC[l])l='pt';
+  LANG=l;
+  nf=new Intl.NumberFormat(LOC[l],{maximumFractionDigits:2,useGrouping:'always'});
+  pf=new Intl.NumberFormat(LOC[l],{maximumFractionDigits:1});
+  document.documentElement.lang=l;
+  try{localStorage.setItem('jinoka_lang',l);}catch(e){}
+}
+(function(){var l='pt';try{l=localStorage.getItem('jinoka_lang')||'pt';}catch(e){}setLang(l);})();
 
 /* ---------- formatação ---------- */
-var nf=new Intl.NumberFormat('pt-PT',{maximumFractionDigits:2,useGrouping:'always'});
-var pf=new Intl.NumberFormat('pt-PT',{maximumFractionDigits:1});
 var fmtN=function(n){return nf.format(Math.round((+n||0)*100)/100);};
 var fmt=function(n){return fmtN(n)+' Kz';};
 var pct=function(n){return (n>0?'+':'')+pf.format(n)+'%';};
+var pad=function(n){return String(n).padStart(2,'0');};
 var fmtD=function(d){var p=String(d||'').split('-');return p.length===3?p[2]+'/'+p[1]+'/'+p[0]:'—';};
-var today=function(){var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');};
-var MONTHS=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
-var monthLabel=function(ym){var p=ym.split('-');return MONTHS[+p[1]-1]+' '+p[0];};
-function kzShort(n){var a=Math.abs(n),s=n<0?'-':'';if(a>=1e6)return s+(a/1e6).toFixed(1).replace('.',',')+' M';if(a>=1e3)return s+Math.round(a/1e3)+' mil';return s+Math.round(a);}
+var fmtTS=function(d){d=d?new Date(d):new Date();if(isNaN(d))return '—';return pad(d.getDate())+'/'+pad(d.getMonth()+1)+'/'+d.getFullYear()+' '+pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());};
+var today=function(){var d=new Date();return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());};
+var monthLabel=function(ym){var p=ym.split('-');return new Date(+p[0],+p[1]-1,1).toLocaleDateString(LOC[LANG],{month:'short',year:'numeric'});};
+function kzShort(n){var a=Math.abs(n),s=n<0?'-':'';if(a>=1e6)return s+pf.format(a/1e6)+' M';if(a>=1e3)return s+Math.round(a/1e3)+(LANG==='pt'?' mil':'k');return s+Math.round(a);}
 var num=function(v){var n=parseFloat(String(v==null?'':v).replace(',','.'));return isNaN(n)?NaN:n;};
-var CATS={Mercadoria:'Aquisição de mercadoria',Transporte:'Transporte',Outro:'Outro'};
-var catLabel=function(c){return CATS[c]||c;};
+var catLabel=function(c){return c==='Mercadoria'?T('Aquisição de mercadoria'):c==='Transporte'?T('Transporte'):T('Outro');};
+var CATKEYS=['Mercadoria','Transporte','Outro'];
+setInterval(function(){$$('[data-clock]').forEach(function(e){e.textContent=fmtTS();});},1000);
+var clockBox=function(){return '<div class="field span-all"><label>'+T('Data e hora do registo (do teu aparelho)')+'</label><div class="clock" data-clock>'+fmtTS()+'</div></div>';};
+var stamp=function(r){return r.ts||r.criadoEm?'<br><span class="hint">'+esc(T('Registado em'))+' '+fmtTS(r.ts||r.criadoEm)+'</span>':'';};
 
-/* ---------- segurança da senha ---------- */
-var enc=new TextEncoder();
-var b64e=function(u){var s='';for(var i=0;i<u.length;i++)s+=String.fromCharCode(u[i]);return btoa(s);};
-var b64d=function(s){var b=atob(s),u=new Uint8Array(b.length);for(var i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return u;};
-var rnd=function(n){return crypto.getRandomValues(new Uint8Array(n));};
-async function derive(secret,saltB64){
-  var key=await crypto.subtle.importKey('raw',enc.encode(secret),'PBKDF2',false,['deriveBits']);
-  var bits=await crypto.subtle.deriveBits({name:'PBKDF2',salt:b64d(saltB64),iterations:150000,hash:'SHA-256'},key,256);
-  return b64e(new Uint8Array(bits));
-}
-function safeEq(a,b){if(a.length!==b.length)return false;var d=0;for(var i=0;i<a.length;i++)d|=a.charCodeAt(i)^b.charCodeAt(i);return d===0;}
-var ALPHA='ABCDEFGHJKMNPQRSTUVWXYZ23456789';
-function newRecoveryKey(){var r=rnd(16),s='';for(var i=0;i<r.length;i++)s+=ALPHA[r[i]%ALPHA.length];return s.match(/.{4}/g).join('-');}
-var normKey=function(k){return String(k||'').toUpperCase().replace(/[^A-Z0-9]/g,'');};
+/* ---------- validações ---------- */
 var validPw=function(p){return p.length>=8&&/[A-Za-z]/.test(p)&&/[0-9]/.test(p);};
 var validEmail=function(e){return /^[a-z0-9._%+-]+@gmail\.com$/i.test(e);};
-async function makeCreds(pw,keyOpt){
-  var salt=b64e(rnd(16)),rsalt=b64e(rnd(16)),key=keyOpt||newRecoveryKey();
-  return {key:key,part:{salt:salt,hash:await derive(pw,salt),rsalt:rsalt,rhash:await derive(normKey(key),rsalt)}};
+function mapAuthError(e){
+  var m=String(e&&e.message||'').toLowerCase();
+  if(m.indexOf('invalid login')>=0)return T('Gmail ou senha incorretos.');
+  if(m.indexOf('not confirmed')>=0)return T('Esta conta ainda não foi ativada. Abre o email com o link de ativação no teu Gmail, ou toca em "Ativar a conta" para receber outro link.');
+  if((e&&e.status===429)||m.indexOf('rate limit')>=0||m.indexOf('too many')>=0)return T('Demasiados pedidos. Espera uns minutos e tenta outra vez.');
+  if(m.indexOf('same password')>=0||m.indexOf('different from the old')>=0)return T('A nova senha tem de ser diferente da anterior.');
+  if(m.indexOf('signups not allowed')>=0||m.indexOf('signup is disabled')>=0)return T('O registo de novas contas está desativado.');
+  if(m.indexOf('fetch')>=0||m.indexOf('network')>=0)return T('Sem ligação à internet. Verifica e tenta outra vez.');
+  return T('Não foi possível concluir. Tenta outra vez.');
 }
-async function verifyPw(pw){return !!auth&&safeEq(await derive(pw,auth.salt),auth.hash);}
 
-function lockState(){return readJSON(LOCK_KEY)||{fails:0,until:0};}
-function registerFail(){var s=lockState();s.fails++;if(s.fails>=5)s.until=Date.now()+Math.min(15*60000,30000*Math.pow(2,s.fails-5));sset(LOCK_KEY,JSON.stringify(s));return s;}
-function clearFails(){sset(LOCK_KEY,JSON.stringify({fails:0,until:0}));}
-function lockedFor(){return Math.max(0,Math.ceil((lockState().until-Date.now())/1000));}
-var fmtWait=function(s){return s>=60?Math.ceil(s/60)+' min':s+' s';};
-
-/* ---------- dados ---------- */
-var auth=null,DB=null,tab='painel',unlocked=false;
+/* ---------- dados na nuvem ---------- */
+var user=null,DB=null,tab='painel',unlocked=false,entering=false,syncText='';
 function normalize(d){
   return {
     capital:d.capital&&typeof d.capital==='object'?d.capital:{valor:0,data:today(),nota:''},
     gastos:Array.isArray(d.gastos)?d.gastos:[],
     produtos:Array.isArray(d.produtos)?d.produtos:[],
     vendas:Array.isArray(d.vendas)?d.vendas:[],
-    lastBackup:+d.lastBackup||0
+    lastBackup:+d.lastBackup||0,
+    idioma:LOC[d.idioma]?d.idioma:''
   };
 }
-function loadData(){var d=readJSON(DATA_KEY);DB=d&&typeof d==='object'?normalize(d):null;}
-function save(){sset(DATA_KEY,JSON.stringify(DB));}
+async function loadData(){
+  var r=await sb.from('jinoka_data').select('dados').eq('user_id',user.id).maybeSingle();
+  if(r.error)throw r.error;
+  DB=r.data&&r.data.dados&&typeof r.data.dados==='object'&&Object.keys(r.data.dados).length?normalize(r.data.dados):null;
+}
+function setSync(t){syncText=t;var e=$('#sync');if(e)e.textContent=t;}
+var saveT=null;
+async function flush(){
+  if(!user||!DB)return;
+  var r=await sb.from('jinoka_data').upsert({user_id:user.id,dados:DB,updated_at:new Date().toISOString()});
+  if(r.error){setSync(T('Não guardado'));toast(T('Não foi possível guardar. Verifica a ligação à internet.'));}
+  else setSync(T('Guardado'));
+}
+function save(){setSync(T('A guardar...'));clearTimeout(saveT);saveT=setTimeout(flush,500);}
+function mk(d,h){return new Date(d+'T'+h).toISOString();}
 function seed(){
-  var P=[['Auriculares Bluetooth',40,4500,7500,8],['Carregador rápido 25W',30,3200,5500,6],['Relógio digital',20,6800,11000,5],['Capa de telemóvel',60,900,2000,15]].map(function(r){return {id:uid(),nome:r[0],qtdEntrada:r[1],custo:r[2],precoVenda:r[3],minimo:r[4],ex:true};});
+  var P=[[T('Auriculares Bluetooth'),40,4500,7500,8],[T('Carregador rápido 25W'),30,3200,5500,6],[T('Relógio digital'),20,6800,11000,5],[T('Capa de telemóvel'),60,900,2000,15]].map(function(r){return {id:uid(),nome:r[0],qtdEntrada:r[1],custo:r[2],precoVenda:r[3],minimo:r[4],criadoEm:mk('2026-09-01','09:00:00'),ex:true};});
   var S=[['2026-09-05',0,10,7500],['2026-09-12',0,8,7200],['2026-09-25',0,9,7500],['2026-10-06',0,7,6800],
          ['2026-09-08',1,10,5500],['2026-09-28',1,8,5200],['2026-10-09',1,7,5500],
          ['2026-09-15',2,4,11000],['2026-10-02',2,3,10500],['2026-10-11',2,3,11000],
          ['2026-09-06',3,20,2000],['2026-09-22',3,25,1800],['2026-10-04',3,15,800]];
-  var vendas=S.map(function(r){return {id:uid(),data:r[0],produtoId:P[r[1]].id,qtd:r[2],precoVenda:r[3],precoReal:P[r[1]].custo,ex:true};});
-  var G=[['2026-09-02','Mercadoria',330000,'Primeira compra de auriculares, carregadores e relógios'],
-         ['2026-09-02','Transporte',25000,'Frete do fornecedor até Luanda'],
-         ['2026-09-20','Mercadoria',136000,'Segunda compra de mercadoria'],
-         ['2026-09-20','Transporte',12000,'Frete da segunda compra'],
-         ['2026-10-03','Outro',8500,'Sacos e etiquetas para embalar encomendas das redes sociais']];
-  var gastos=G.map(function(r){return {id:uid(),data:r[0],categoria:r[1],valor:r[2],justificacao:r[3],ex:true};});
-  return {capital:{valor:500000,data:'2026-09-01',nota:'Capital de exemplo',ex:true},gastos:gastos,produtos:P,vendas:vendas,lastBackup:0};
+  var vendas=S.map(function(r){return {id:uid(),data:r[0],produtoId:P[r[1]].id,qtd:r[2],precoVenda:r[3],precoReal:P[r[1]].custo,ts:mk(r[0],'14:30:00'),ex:true};});
+  var G=[['2026-09-02','Mercadoria',330000,T('Primeira compra de auriculares, carregadores e relógios')],
+         ['2026-09-02','Transporte',25000,T('Frete do fornecedor até Luanda')],
+         ['2026-09-20','Mercadoria',136000,T('Segunda compra de mercadoria')],
+         ['2026-09-20','Transporte',12000,T('Frete da segunda compra')],
+         ['2026-10-03','Outro',8500,T('Sacos e etiquetas para embalar encomendas das redes sociais')]];
+  var gastos=G.map(function(r){return {id:uid(),data:r[0],categoria:r[1],valor:r[2],justificacao:r[3],ts:mk(r[0],'10:00:00'),ex:true};});
+  return {capital:{valor:500000,data:'2026-09-01',nota:T('Capital de exemplo'),ex:true},gastos:gastos,produtos:P,vendas:vendas,lastBackup:0,idioma:''};
 }
 var stat=function(p){return p.atual<=0?'out':(p.atual<=p.minimo?'low':'ok');};
 function calc(){
@@ -346,53 +337,61 @@ function calc(){
   return {prods:prods,vendido:vendido,custoVendido:custoVendido,lucro:vendido-custoVendido,gastos:gastos,porCat:porCat,capital:capital,saldo:saldo,stockCusto:stockCusto,stockVenda:stockVenda,alerts:alerts,patrimonio:saldo+stockCusto};
 }
 var hasExamples=function(){return DB.capital.ex||DB.produtos.some(function(x){return x.ex;})||DB.vendas.some(function(x){return x.ex;})||DB.gastos.some(function(x){return x.ex;});};
-var pName=function(id){var p=DB.produtos.find(function(x){return x.id===id;});return p?p.nome:'(produto apagado)';};
+var pName=function(id){var p=DB.produtos.find(function(x){return x.id===id;});return p?p.nome:T('(produto apagado)');};
+
+/* ---------- marca ---------- */
+var tagSvg=function(hole){return '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 3h13l13 13-13 13L3 16z" style="fill:var(--accent)"/><circle cx="9.5" cy="9.5" r="2.6" style="fill:var(--'+hole+')"/></svg>';};
+var brandBtn=function(hole){return '<button class="brand brandbtn" type="button" data-act="reload" aria-label="'+esc(T('Atualizar a página'))+'">'+tagSvg(hole)+'<span><span class="wordmark">JINOKA</span><span class="slogan">'+T('Produtos ao melhor preço')+'</span></span></button>';};
+function buildHeader(){
+  $('#hdr').innerHTML=brandBtn('head-bg')+'<div class="topright"><span class="slogan" id="sync" aria-live="polite">'+esc(syncText)+'</span><button class="btn ghost sm" type="button" data-act="lock">'+T('Terminar sessão')+'</button></div>';
+  $('#nav').setAttribute('aria-label',T('Secções'));
+}
 
 /* ---------- ecrãs de acesso ---------- */
-var AUTH_VIEWS=['a-setup','a-key','a-login','a-recover'];
-var lockTimer=null,keyDone=null;
+var AUTH_VIEWS=['a-login','a-signup','a-sent','a-forgot','a-reset','a-activate'];
+var pwField=function(id,name,label,auto,hint){return '<div class="field"><label for="'+id+'">'+label+'</label><div class="pwrow"><input id="'+id+'" name="'+name+'" type="password" autocomplete="'+auto+'"><button type="button" class="btn ghost sm" data-show="'+id+'">'+T('Mostrar')+'</button></div>'+(hint?'<span class="hint">'+hint+'</span>':'')+'</div>';};
+var mailField=function(id,label){return '<div class="field"><label for="'+id+'">'+label+'</label><input id="'+id+'" name="email" type="email" autocomplete="email" placeholder="nome@gmail.com"></div>';};
+function authHTML(){
+  var hint=T('Mínimo de 8 caracteres, com letras e números.');
+  return brandBtn('bg')+
+  '<form id="a-login" class="card stack" novalidate hidden><h1>'+T('Entrar')+'</h1><p class="muted">'+T('Escreve o Gmail e a senha da tua conta JINOKA.')+'</p>'+
+    mailField('l-email','Gmail')+pwField('l-pw','pw',T('Senha'),'current-password')+
+    '<p class="err" id="l-err" role="alert" hidden></p><button class="btn" type="submit">'+T('Entrar')+'</button>'+
+    '<button class="link" type="button" data-go="a-forgot">'+T('Esqueci a minha senha')+'</button>'+
+    '<button class="link" type="button" data-go="a-activate">'+T('Ativar a conta')+'</button>'+
+    '<button class="link" type="button" id="l-signup" data-go="a-signup">'+T('Criar a conta')+'</button></form>'+
+  '<form id="a-signup" class="card stack" novalidate hidden><h1>'+T('Criar a conta')+'</h1><p class="muted">'+T('Vamos enviar um link de ativação para o teu Gmail. A conta só fica ativa depois de carregares nesse link.')+'</p>'+
+    mailField('s-email','Gmail')+pwField('s-pw','pw',T('Senha'),'new-password',hint)+
+    '<div class="field"><label for="s-pw2">'+T('Repetir a senha')+'</label><input id="s-pw2" name="pw2" type="password" autocomplete="new-password"></div>'+
+    '<p class="err" id="s-err" role="alert" hidden></p><button class="btn" type="submit">'+T('Criar conta e enviar link')+'</button>'+
+    '<button class="link" type="button" data-go="a-login">'+T('Já tenho conta')+'</button></form>'+
+  '<div id="a-sent" class="card stack" hidden><h1>'+T('Verifica o teu Gmail')+'</h1><p>'+T('Enviámos um link de ativação para')+' <strong id="sent-email"></strong>.</p><p class="muted">'+T('Abre o email, carrega no link e a conta fica ativa. Se não encontrares, procura na pasta Spam.')+'</p>'+
+    '<button class="btn" type="button" data-go="a-login">'+T('Já ativei, quero entrar')+'</button></div>'+
+  '<form id="a-activate" class="card stack" novalidate hidden><h1>'+T('Ativar a conta')+'</h1><p class="muted">'+T('Escreve o Gmail da conta. Vamos enviar outra vez o link de ativação.')+'</p>'+
+    mailField('t-email','Gmail')+'<p class="err" id="t-err" role="alert" hidden></p><p class="notice good" id="t-ok" role="status" hidden></p>'+
+    '<button class="btn" type="submit">'+T('Enviar link de ativação')+'</button><button class="link" type="button" data-go="a-login">'+T('Voltar')+'</button></form>'+
+  '<form id="a-forgot" class="card stack" novalidate hidden><h1>'+T('Recuperar a senha')+'</h1><p class="muted">'+T('Escreve o Gmail da conta. Vamos enviar um link para criares uma nova senha.')+'</p>'+
+    mailField('f-email','Gmail')+'<p class="err" id="f-err" role="alert" hidden></p><p class="notice info" id="f-ok" role="status" hidden></p>'+
+    '<button class="btn" type="submit">'+T('Enviar link')+'</button><button class="link" type="button" data-go="a-login">'+T('Voltar')+'</button></form>'+
+  '<form id="a-reset" class="card stack" novalidate hidden><h1>'+T('Nova senha')+'</h1><p class="muted">'+T('Escolhe uma senha nova para a tua conta.')+'</p>'+
+    pwField('r-pw','pw',T('Nova senha'),'new-password',hint)+
+    '<div class="field"><label for="r-pw2">'+T('Repetir a nova senha')+'</label><input id="r-pw2" name="pw2" type="password" autocomplete="new-password"></div>'+
+    '<p class="err" id="r-err" role="alert" hidden></p><button class="btn" type="submit">'+T('Guardar nova senha')+'</button></form>';
+}
 function showErr(el,msg){el.textContent=msg;el.hidden=false;}
 function showAuth(view){
-  unlocked=false;
-  clearTimeout(idleT);
+  unlocked=false;clearTimeout(idleT);
   $('#app').hidden=true;$('#auth').hidden=false;
+  $('#auth-in').innerHTML=authHTML();
   AUTH_VIEWS.forEach(function(v){$('#'+v).hidden=(v!==view);});
-  ['s-err','l-err','r-err'].forEach(function(i){$('#'+i).hidden=true;});
-  ['s-pw','s-pw2','l-pw','r-pw','r-pw2'].forEach(function(i){var e=$('#'+i);e.value='';e.type='password';});
-  if(view==='a-login'){
-    var em=auth.email.split('@');
-    $('#l-hint').textContent='Conta '+em[0].charAt(0)+'***@'+em[1]+'. Escreve a tua senha para continuar.';
-    refreshLock();
-  }
-  var first=$('#'+view+' input:not([type=checkbox])');
-  if(first&&view!=='a-key'&&window.scrollY===0)try{first.focus({preventScroll:true});}catch(e){}
-}
-function refreshLock(){
-  clearInterval(lockTimer);
-  var go=$('#l-go'),err=$('#l-err');
-  function tick(){
-    var s=lockedFor();
-    if(s>0){go.disabled=true;showErr(err,'Demasiadas tentativas. Espera '+fmtWait(s)+' para tentar outra vez.');}
-    else{if(go.disabled){go.disabled=false;err.hidden=true;}clearInterval(lockTimer);}
-  }
-  tick();
-  if(lockedFor()>0)lockTimer=setInterval(tick,1000);
-}
-function showKey(key,title,done){
-  $('#k-box').textContent=key;
-  $('#k-title').textContent=title;
-  $('#k-ok').checked=false;$('#k-go').disabled=true;
-  keyDone=done;
-  showAuth('a-key');
+  $('#l-signup').hidden=!PERMITIR_REGISTO;
+  var first=$('#'+view+' input');
+  if(first)try{first.focus({preventScroll:true});}catch(e){}
 }
 function setBusy(form,on,label){
   var b=form.querySelector('button[type=submit]');if(!b)return;
-  if(on){b.dataset.t=b.textContent;b.textContent=label||'A verificar...';b.disabled=true;}
+  if(on){b.dataset.t=b.textContent;b.textContent=label||T('A verificar...');b.disabled=true;}
   else{b.textContent=b.dataset.t||b.textContent;b.disabled=false;}
-}
-function copyText(text,el){
-  function fallback(){try{var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);}catch(e){}toast('Seleciona e copia a chave manualmente.');}
-  try{navigator.clipboard.writeText(text).then(function(){toast('Chave copiada.');},fallback);}catch(e){fallback();}
 }
 
 /* ---------- bloqueio por inatividade ---------- */
@@ -400,155 +399,167 @@ var idleT=null,lastActive=Date.now(),IDLE=10*60*1000;
 function bump(){if(!unlocked)return;lastActive=Date.now();clearTimeout(idleT);idleT=setTimeout(lockApp,IDLE);}
 ['pointerdown','keydown','touchstart','scroll'].forEach(function(ev){addEventListener(ev,bump,{passive:true});});
 document.addEventListener('visibilitychange',function(){if(!document.hidden&&unlocked&&Date.now()-lastActive>IDLE)lockApp();});
-function lockApp(){
+async function lockApp(){
   if(!unlocked)return;
   closeModal();$('#main').innerHTML='';
-  showAuth('a-login');
+  try{await sb.auth.signOut();}catch(e){}
+  user=null;DB=null;showAuth('a-login');
 }
-function enterApp(){
-  loadData();
-  if(!DB){DB=seed();save();}
-  unlocked=true;tab='painel';
-  $('#auth').hidden=true;$('#app').hidden=false;
-  render();bump();window.scrollTo(0,0);
+async function enterApp(){
+  if(entering||unlocked)return;
+  entering=true;
+  try{
+    await loadData();
+    if(!DB){DB=seed();await flush();}
+    if(DB.idioma&&DB.idioma!==LANG)setLang(DB.idioma);
+    unlocked=true;tab='painel';
+    $('#auth').hidden=true;$('#app').hidden=false;
+    setSync(T('Guardado'));buildHeader();render();bump();window.scrollTo(0,0);
+  }catch(e){
+    toast(T('Não foi possível carregar os dados. Verifica a ligação e tenta outra vez.'));
+    try{await sb.auth.signOut();}catch(x){}
+    user=null;DB=null;showAuth('a-login');
+  }
+  entering=false;
 }
 
 /* ---------- janelas, avisos ---------- */
 var toastT=null;
-function toast(msg){var t=$('#toast');t.textContent=msg;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(function(){t.hidden=true;},3200);}
+function toast(msg){var t=$('#toast');t.textContent=msg;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(function(){t.hidden=true;},3500);}
 function closeModal(){$('#modal-root').innerHTML='';}
 function openModal(o){
   var root=$('#modal-root');
-  root.innerHTML='<div class="scrim" data-scrim><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mt"><h2 id="mt">'+esc(o.title)+'</h2><form id="mform" novalidate>'+(o.body||'')+'<p class="err" id="merr" role="alert" hidden></p><div class="actions"><button type="button" class="btn ghost" data-close>Cancelar</button><button class="btn'+(o.danger?' danger':'')+'" type="submit">'+esc(o.confirmText||'Guardar')+'</button></div></form></div></div>';
+  root.innerHTML='<div class="scrim" data-scrim><div class="modal" role="dialog" aria-modal="true" aria-labelledby="mt"><h2 id="mt">'+esc(o.title)+'</h2><form id="mform" novalidate>'+(o.body||'')+'<p class="err" id="merr" role="alert" hidden></p><div class="actions"><button type="button" class="btn ghost" data-close>'+T('Cancelar')+'</button><button class="btn'+(o.danger?' danger':'')+'" type="submit">'+esc(o.confirmText||T('Guardar'))+'</button></div></form></div></div>';
   var f=$('#mform');
   f.addEventListener('submit',async function(e){
     e.preventDefault();
     var b=f.querySelector('button[type=submit]');b.disabled=true;
-    var r;try{r=await o.onSubmit(new FormData(f));}catch(x){r={error:'Ocorreu um erro. Tenta outra vez.'};}
+    var r;try{r=await o.onSubmit(new FormData(f));}catch(x){r={error:T('Ocorreu um erro. Tenta outra vez.')};}
     if(r&&r.error){showErr($('#merr'),r.error);b.disabled=false;}else closeModal();
   });
   var fi=f.querySelector('input,select,textarea,button');if(fi)try{fi.focus({preventScroll:true});}catch(e){}
 }
 function confirmModal(title,text,yes,btn){
-  openModal({title:title,body:'<p>'+esc(text)+'</p>',confirmText:btn||'Apagar',danger:true,onSubmit:function(){yes();}});
+  openModal({title:title,body:'<p>'+esc(text)+'</p>',confirmText:btn||T('Apagar'),danger:true,onSubmit:function(){yes();}});
 }
 var fld=function(label,name,o){o=o||{};var id=o.id||name;return '<div class="field '+(o.cls||'')+'"><label for="'+id+'">'+label+'</label><input id="'+id+'" name="'+name+'" type="'+(o.type||'text')+'" '+(o.attrs||'')+' value="'+esc(o.value==null?'':o.value)+'"></div>';};
 var numAttrs=function(min,step){return 'inputmode="decimal" min="'+min+'" step="'+(step||'any')+'" autocomplete="off"';};
 
 /* ---------- vistas ---------- */
-function banners(C){
-  var h='';
-  if(hasExamples())h+='<div class="notice"><span>Estás a ver dados de exemplo da JINOKA para perceber como a aplicação funciona.</span><button class="btn sm" type="button" data-act="clear-examples">Apagar exemplos e começar</button></div>';
-  if(!persistent)h+='<div class="notice"><span>Este navegador não guarda dados. O que registares perde-se ao fechar a página.</span></div>';
-  return h;
+function banners(){
+  return hasExamples()?'<div class="notice"><span>'+T('Estás a ver dados de exemplo da JINOKA para perceber como a aplicação funciona.')+'</span><button class="btn sm" type="button" data-act="clear-examples">'+T('Apagar exemplos e começar')+'</button></div>':'';
 }
 function table(head,rows,foot,empty){
   if(!rows)return '<div class="tablewrap"><div class="empty">'+empty+'</div></div>';
   return '<div class="tablewrap"><table><thead><tr>'+head+'</tr></thead><tbody>'+rows+'</tbody>'+(foot||'')+'</table></div>';
 }
-function statChip(p){var s=stat(p);return s==='out'?'<span class="chip bad">Esgotado</span>':s==='low'?'<span class="chip warn">Stock baixo</span>':'<span class="chip good">Normal</span>';}
+var th=function(k,cls){return '<th'+(cls?' class="'+cls+'"':'')+'>'+k+'</th>';};
+function statChip(p){var s=stat(p);return s==='out'?'<span class="chip bad">'+T('Esgotado')+'</span>':s==='low'?'<span class="chip warn">'+T('Stock baixo')+'</span>':'<span class="chip good">'+T('Normal')+'</span>';}
 function diffPct(v){return v.precoReal>0?(v.precoVenda-v.precoReal)/v.precoReal*100:null;}
 function diffChip(d){return d==null?'<span class="chip neutral">—</span>':'<span class="chip '+(d>=0?'good':'bad')+'">'+pct(d)+'</span>';}
 
 function vPainel(C){
   var growth=C.capital>0?pct((C.patrimonio-C.capital)/C.capital*100):'—';
-  var vend=[].concat(DB.vendas).sort(function(a,b){return b.data.localeCompare(a.data);}).slice(0,5);
-  var vrows=vend.map(function(v){return '<tr><td>'+fmtD(v.data)+'</td><td>'+esc(pName(v.produtoId))+'</td><td class="num">'+v.qtd+'</td><td class="num">'+fmt(v.qtd*v.precoVenda)+'</td><td>'+diffChip(diffPct(v))+'</td></tr>';}).join('');
-  var al=C.alerts.slice().sort(function(a,b){return a.atual-b.atual;}).slice(0,5).map(function(p){return '<div class="aitem"><span><strong>'+esc(p.nome)+'</strong> · '+p.atual+' em stock</span>'+statChip(p)+'</div>';}).join('');
+  var vend=[].concat(DB.vendas).sort(function(a,b){return (b.ts||b.data).localeCompare(a.ts||a.data);}).slice(0,5);
+  var vrows=vend.map(function(v){return '<tr><td class="when">'+fmtD(v.data)+'</td><td>'+esc(pName(v.produtoId))+'</td><td class="num">'+v.qtd+'</td><td class="num">'+fmt(v.qtd*v.precoVenda)+'</td><td>'+diffChip(diffPct(v))+'</td></tr>';}).join('');
+  var al=C.alerts.slice().sort(function(a,b){return a.atual-b.atual;}).slice(0,5).map(function(p){return '<div class="aitem"><span><strong>'+esc(p.nome)+'</strong> · '+T('{0} em stock',[p.atual])+'</span>'+statChip(p)+'</div>';}).join('');
   var rem=(!DB.lastBackup||Date.now()-DB.lastBackup>7*864e5)&&!hasExamples()&&(DB.vendas.length||DB.gastos.length)
-    ?'<div class="notice info"><span>Ainda não fizeste uma cópia de segurança esta semana.</span><button class="btn ghost sm" type="button" data-tab="config">Ir para as cópias</button></div>':'';
-  return banners(C)+rem+
-  '<section class="hero"><span class="eyebrow">Dinheiro em caixa</span><span class="big">'+fmt(C.saldo)+'</span><span class="eq">'+fmtN(C.capital)+' de capital + '+fmtN(C.vendido)+' vendidos − '+fmtN(C.gastos)+' gastos</span></section>'+
+    ?'<div class="notice info"><span>'+T('Ainda não fizeste uma cópia de segurança esta semana.')+'</span><button class="btn ghost sm" type="button" data-tab="config">'+T('Ir para as cópias')+'</button></div>':'';
+  return banners()+rem+
+  '<section class="hero"><span class="eyebrow">'+T('Dinheiro em caixa')+'</span><span class="big">'+fmt(C.saldo)+'</span><span class="eq">'+T('{0} de capital + {1} vendidos − {2} gastos',[fmtN(C.capital),fmtN(C.vendido),fmtN(C.gastos)])+'</span></section>'+
   '<section class="kpis">'+
-    '<div class="kpi"><span class="l">Total vendido</span><span class="v">'+fmt(C.vendido)+'</span></div>'+
-    '<div class="kpi"><span class="l">Total gasto</span><span class="v">'+fmt(C.gastos)+'</span></div>'+
-    '<div class="kpi"><span class="l">Lucro bruto das vendas</span><span class="v">'+fmt(C.lucro)+'</span></div>'+
-    '<div class="kpi"><span class="l">Crescimento do património</span><span class="v">'+growth+'</span></div>'+
+    '<div class="kpi"><span class="l">'+T('Total vendido')+'</span><span class="v">'+fmt(C.vendido)+'</span></div>'+
+    '<div class="kpi"><span class="l">'+T('Total gasto')+'</span><span class="v">'+fmt(C.gastos)+'</span></div>'+
+    '<div class="kpi"><span class="l">'+T('Lucro bruto das vendas')+'</span><span class="v">'+fmt(C.lucro)+'</span></div>'+
+    '<div class="kpi"><span class="l">'+T('Crescimento do património')+'</span><span class="v">'+growth+'</span></div>'+
   '</section>'+
-  '<div class="cols"><section class="sec"><div class="sec-head"><h2>Stock em alerta</h2><button class="link" type="button" data-tab="alertas">Ver tudo</button></div>'+(al?'<div class="alist">'+al+'</div>':'<div class="tablewrap"><div class="empty">Nenhum produto em alerta.</div></div>')+'</section>'+
-  '<section class="sec"><div class="sec-head"><h2>Últimas vendas</h2><button class="link" type="button" data-tab="vendas">Ver tudo</button></div>'+table('<th>Data</th><th>Produto</th><th class="num">Qtd</th><th class="num">Total</th><th>Diferença</th>',vrows,'','Ainda não há vendas.')+'</section></div>';
+  '<div class="cols"><section class="sec"><div class="sec-head"><h2>'+T('Stock em alerta')+'</h2><button class="link" type="button" data-tab="alertas">'+T('Ver tudo')+'</button></div>'+(al?'<div class="alist">'+al+'</div>':'<div class="tablewrap"><div class="empty">'+T('Nenhum produto em alerta.')+'</div></div>')+'</section>'+
+  '<section class="sec"><div class="sec-head"><h2>'+T('Últimas vendas')+'</h2><button class="link" type="button" data-tab="vendas">'+T('Ver tudo')+'</button></div>'+table(th(T('Data'))+th(T('Produto'))+th(T('Qtd'),'num')+th(T('Total'),'num')+th(T('Diferença')),vrows,'',T('Ainda não há vendas.'))+'</section></div>';
 }
 
 function vCapital(C){
-  var rows=[].concat(DB.gastos).sort(function(a,b){return b.data.localeCompare(a.data);}).map(function(g){
-    return '<tr><td>'+fmtD(g.data)+'</td><td><span class="chip neutral">'+esc(catLabel(g.categoria))+'</span></td><td class="num">'+fmt(g.valor)+'</td><td class="just">'+esc(g.justificacao||'—')+'</td><td class="num"><button class="btn ghost sm" type="button" data-act="del-gasto" data-id="'+g.id+'">Apagar</button></td></tr>';
+  var rows=[].concat(DB.gastos).sort(function(a,b){return (b.ts||b.data).localeCompare(a.ts||a.data);}).map(function(g){
+    return '<tr><td class="when">'+fmtD(g.data)+stamp(g)+'</td><td><span class="chip neutral">'+esc(catLabel(g.categoria))+'</span></td><td class="num">'+fmt(g.valor)+'</td><td class="just">'+esc(g.justificacao||'—')+'</td><td class="num"><button class="btn ghost sm" type="button" data-act="del-gasto" data-id="'+g.id+'">'+T('Apagar')+'</button></td></tr>';
   }).join('');
-  var cat=Object.keys(CATS).map(function(k){return '<option value="'+k+'">'+CATS[k]+'</option>';}).join('');
-  return banners(C)+
-  '<section class="sec"><h2>Capital inicial</h2><form id="f-capital" class="card" novalidate><div class="form">'+
-    fld('Valor (Kz)','valor',{id:'c-valor',type:'number',attrs:numAttrs(0),value:DB.capital.valor})+
-    fld('Data','data',{id:'c-data',type:'date',value:DB.capital.data||today()})+
-    fld('Origem (opcional)','nota',{id:'c-nota',value:DB.capital.nota||'',attrs:'autocomplete="off"'})+
-    '<button class="btn" type="submit">Guardar capital</button></div><p class="err" data-err hidden></p></form></section>'+
-  '<section class="sec"><h2>Registar gasto</h2><form id="f-gasto" class="card" novalidate><div class="form">'+
-    '<div class="field"><label for="g-cat">Tipo de gasto</label><select id="g-cat" name="categoria">'+cat+'</select></div>'+
-    fld('Valor (Kz)','valor',{id:'g-valor',type:'number',attrs:numAttrs(0)})+
-    fld('Data','data',{id:'g-data',type:'date',value:today()})+
-    '<div class="field span-all"><label for="g-just">Justificação <span id="g-req" class="muted">(opcional)</span></label><textarea id="g-just" name="justificacao" placeholder="Para que serviu este dinheiro?"></textarea></div>'+
-    '<button class="btn" type="submit">Registar gasto</button></div><p class="err" data-err hidden></p>'+
-    '<p class="hint" style="margin-top:8px">Os gastos em “Outro” têm de ter justificação.</p></form></section>'+
-  '<section class="sec"><div class="sec-head"><h2>Gastos registados</h2><span class="muted">Total: <strong>'+fmt(C.gastos)+'</strong></span></div>'+
-    '<div class="kpis">'+Object.keys(CATS).map(function(k){return '<div class="kpi"><span class="l">'+CATS[k]+'</span><span class="v">'+fmt(C.porCat[k]||0)+'</span></div>';}).join('')+'</div>'+
-    table('<th>Data</th><th>Tipo</th><th class="num">Valor</th><th>Justificação</th><th></th>',rows,'','Ainda não há gastos registados.')+'</section>';
+  var cat=CATKEYS.map(function(k){return '<option value="'+k+'">'+esc(catLabel(k))+'</option>';}).join('');
+  return banners()+
+  '<section class="sec"><h2>'+T('Capital inicial')+'</h2><form id="f-capital" class="card" novalidate><div class="form">'+
+    fld(T('Valor (Kz)'),'valor',{id:'c-valor',type:'number',attrs:numAttrs(0),value:DB.capital.valor})+
+    fld(T('Data'),'data',{id:'c-data',type:'date',value:DB.capital.data||today()})+
+    fld(T('Origem (opcional)'),'nota',{id:'c-nota',value:DB.capital.nota||'',attrs:'autocomplete="off"'})+
+    '<button class="btn" type="submit">'+T('Guardar capital')+'</button></div><p class="err" data-err hidden></p></form></section>'+
+  '<section class="sec"><h2>'+T('Registar gasto')+'</h2><form id="f-gasto" class="card" novalidate><div class="form">'+
+    '<div class="field"><label for="g-cat">'+T('Tipo de gasto')+'</label><select id="g-cat" name="categoria">'+cat+'</select></div>'+
+    fld(T('Valor (Kz)'),'valor',{id:'g-valor',type:'number',attrs:numAttrs(0)})+
+    fld(T('Data'),'data',{id:'g-data',type:'date',value:today()})+
+    clockBox()+
+    '<div class="field span-all"><label for="g-just">'+T('Justificação')+' <span id="g-req" class="muted">'+T('(opcional)')+'</span></label><textarea id="g-just" name="justificacao" placeholder="'+esc(T('Para que serviu este dinheiro?'))+'"></textarea></div>'+
+    '<button class="btn" type="submit">'+T('Registar gasto')+'</button></div><p class="err" data-err hidden></p>'+
+    '<p class="hint" style="margin-top:8px">'+T('Os gastos em "Outro" têm de ter justificação.')+'</p></form></section>'+
+  '<section class="sec"><div class="sec-head"><h2>'+T('Gastos registados')+'</h2><span class="muted">'+T('Total')+': <strong>'+fmt(C.gastos)+'</strong></span></div>'+
+    '<div class="kpis">'+CATKEYS.map(function(k){return '<div class="kpi"><span class="l">'+esc(catLabel(k))+'</span><span class="v">'+fmt(C.porCat[k]||0)+'</span></div>';}).join('')+'</div>'+
+    table(th(T('Data'))+th(T('Tipo'))+th(T('Valor'),'num')+th(T('Justificação'))+th(''),rows,'',T('Ainda não há gastos registados.'))+'</section>';
 }
 
 function vProdutos(C){
   var rows=C.prods.slice().sort(function(a,b){return a.nome.localeCompare(b.nome);}).map(function(p){
     var m=p.custo>0?pct((p.precoVenda-p.custo)/p.custo*100):'—';
-    return '<tr><td><strong>'+esc(p.nome)+'</strong></td><td class="num">'+p.qtdEntrada+'</td><td class="num">'+p.sold+'</td><td class="num"><strong>'+p.atual+'</strong></td><td>'+statChip(p)+'</td><td class="num">'+fmt(p.custo)+'</td><td class="num">'+fmt(p.precoVenda)+'</td><td class="num">'+m+'</td>'+
-      '<td class="num"><button class="btn ghost sm" type="button" data-act="restock" data-id="'+p.id+'">Repor</button> <button class="btn ghost sm" type="button" data-act="edit-produto" data-id="'+p.id+'">Editar</button> <button class="btn ghost sm" type="button" data-act="del-produto" data-id="'+p.id+'">Apagar</button></td></tr>';
+    return '<tr><td><strong>'+esc(p.nome)+'</strong></td><td class="when">'+(p.criadoEm?fmtTS(p.criadoEm):'—')+'</td><td class="num">'+p.qtdEntrada+'</td><td class="num">'+p.sold+'</td><td class="num"><strong>'+p.atual+'</strong></td><td>'+statChip(p)+'</td><td class="num">'+fmt(p.custo)+'</td><td class="num">'+fmt(p.precoVenda)+'</td><td class="num">'+m+'</td>'+
+      '<td class="num"><button class="btn ghost sm" type="button" data-act="restock" data-id="'+p.id+'">'+T('Repor')+'</button> <button class="btn ghost sm" type="button" data-act="edit-produto" data-id="'+p.id+'">'+T('Editar')+'</button> <button class="btn ghost sm" type="button" data-act="del-produto" data-id="'+p.id+'">'+T('Apagar')+'</button></td></tr>';
   }).join('');
-  return banners(C)+
-  '<section class="sec"><h2>Novo produto</h2><form id="f-produto" class="card" novalidate><div class="form">'+
-    fld('Nome do produto','nome',{id:'p-nome',attrs:'autocomplete="off"',cls:'span-all'})+
-    fld('Quantidade comprada','qtd',{id:'p-qtd',type:'number',attrs:numAttrs(1,1)})+
-    fld('Preço real (custo por unidade)','custo',{id:'p-custo',type:'number',attrs:numAttrs(0)})+
-    fld('Preço de venda previsto','pv',{id:'p-pv',type:'number',attrs:numAttrs(0)})+
-    fld('Avisar quando restarem','min',{id:'p-min',type:'number',attrs:numAttrs(0,1),value:5})+
-    '<button class="btn" type="submit">Adicionar produto</button></div><p class="err" data-err hidden></p>'+
-    '<p class="hint" style="margin-top:8px">O preço real serve para calcular o lucro de cada venda. O dinheiro gasto na compra regista-se em Capital e gastos.</p></form></section>'+
-  '<section class="sec"><h2>Stock</h2>'+table('<th>Produto</th><th class="num">Comprado</th><th class="num">Vendido</th><th class="num">Em stock</th><th>Estado</th><th class="num">Preço real</th><th class="num">Venda prevista</th><th class="num">Margem</th><th></th>',rows,'','Ainda não há produtos. Adiciona o primeiro acima.')+'</section>';
+  return banners()+
+  '<section class="sec"><h2>'+T('Novo produto')+'</h2><form id="f-produto" class="card" novalidate><div class="form">'+
+    fld(T('Nome do produto'),'nome',{id:'p-nome',attrs:'autocomplete="off"',cls:'span-all'})+
+    fld(T('Quantidade comprada'),'qtd',{id:'p-qtd',type:'number',attrs:numAttrs(1,1)})+
+    fld(T('Preço real (custo por unidade)'),'custo',{id:'p-custo',type:'number',attrs:numAttrs(0)})+
+    fld(T('Preço de venda previsto'),'pv',{id:'p-pv',type:'number',attrs:numAttrs(0)})+
+    fld(T('Avisar quando restarem'),'min',{id:'p-min',type:'number',attrs:numAttrs(0,1),value:5})+
+    clockBox()+
+    '<button class="btn" type="submit">'+T('Adicionar produto')+'</button></div><p class="err" data-err hidden></p>'+
+    '<p class="hint" style="margin-top:8px">'+T('O preço real serve para calcular o lucro de cada venda. O dinheiro gasto na compra regista-se em Capital e gastos.')+'</p></form></section>'+
+  '<section class="sec"><h2>'+T('Stock')+'</h2>'+table(th(T('Produto'))+th(T('Registado em'))+th(T('Comprado'),'num')+th(T('Vendido'),'num')+th(T('Em stock'),'num')+th(T('Estado'))+th(T('Preço real'),'num')+th(T('Venda prevista'),'num')+th(T('Margem'),'num')+th(''),rows,'',T('Ainda não há produtos. Adiciona o primeiro acima.'))+'</section>';
 }
 
 function vVendas(C){
-  var opts=C.prods.map(function(p){return '<option value="'+p.id+'"'+(p.atual<=0?' disabled':'')+'>'+esc(p.nome)+' ('+p.atual+' em stock)</option>';}).join('');
-  var rows=[].concat(DB.vendas).sort(function(a,b){return b.data.localeCompare(a.data);}).map(function(v){
+  var opts=C.prods.map(function(p){return '<option value="'+p.id+'"'+(p.atual<=0?' disabled':'')+'>'+esc(p.nome)+' ('+T('{0} em stock',[p.atual])+')</option>';}).join('');
+  var rows=[].concat(DB.vendas).sort(function(a,b){return (b.ts||b.data).localeCompare(a.ts||a.data);}).map(function(v){
     var d=diffPct(v);
-    return '<tr><td>'+fmtD(v.data)+'</td><td>'+esc(pName(v.produtoId))+'</td><td class="num">'+v.qtd+'</td><td class="num">'+fmt(v.precoReal)+'</td><td class="num">'+fmt(v.precoVenda)+'</td><td>'+diffChip(d)+'</td><td class="num">'+fmt((v.precoVenda-v.precoReal)*v.qtd)+'</td><td class="num"><strong>'+fmt(v.qtd*v.precoVenda)+'</strong></td><td class="num"><button class="btn ghost sm" type="button" data-act="del-venda" data-id="'+v.id+'">Apagar</button></td></tr>';
+    return '<tr><td class="when">'+fmtD(v.data)+stamp(v)+'</td><td>'+esc(pName(v.produtoId))+'</td><td class="num">'+v.qtd+'</td><td class="num">'+fmt(v.precoReal)+'</td><td class="num">'+fmt(v.precoVenda)+'</td><td>'+diffChip(d)+'</td><td class="num">'+fmt((v.precoVenda-v.precoReal)*v.qtd)+'</td><td class="num"><strong>'+fmt(v.qtd*v.precoVenda)+'</strong></td><td class="num"><button class="btn ghost sm" type="button" data-act="del-venda" data-id="'+v.id+'">'+T('Apagar')+'</button></td></tr>';
   }).join('');
   var form=C.prods.length?
     '<form id="f-venda" class="card" novalidate><div class="form">'+
-    '<div class="field"><label for="v-prod">Produto</label><select id="v-prod" name="produtoId">'+opts+'</select></div>'+
-    fld('Data','data',{id:'v-data',type:'date',value:today()})+
-    fld('Quantidade','qtd',{id:'v-qtd',type:'number',attrs:numAttrs(1,1),value:1})+
-    fld('Preço real do produto (por unidade)','precoReal',{id:'v-pr',type:'number',attrs:numAttrs(0)})+
-    fld('Preço a que vendeste (por unidade)','precoVenda',{id:'v-pv',type:'number',attrs:numAttrs(0)})+
-    '<div class="preview span-all" id="v-prev" aria-live="polite">Escolhe o produto e confirma os preços para ver a diferença.</div>'+
-    '<button class="btn" type="submit">Registar venda</button></div><p class="err" data-err hidden></p></form>'
-    :'<div class="card muted">Cria primeiro um produto na aba Produtos para poder registar vendas.</div>';
+    '<div class="field"><label for="v-prod">'+T('Produto')+'</label><select id="v-prod" name="produtoId">'+opts+'</select></div>'+
+    fld(T('Data'),'data',{id:'v-data',type:'date',value:today()})+
+    fld(T('Quantidade'),'qtd',{id:'v-qtd',type:'number',attrs:numAttrs(1,1),value:1})+
+    fld(T('Preço real do produto (por unidade)'),'precoReal',{id:'v-pr',type:'number',attrs:numAttrs(0)})+
+    fld(T('Preço a que vendeste (por unidade)'),'precoVenda',{id:'v-pv',type:'number',attrs:numAttrs(0)})+
+    clockBox()+
+    '<div class="preview span-all" id="v-prev" aria-live="polite">'+T('Escolhe o produto e confirma os preços para ver a diferença.')+'</div>'+
+    '<button class="btn" type="submit">'+T('Registar venda')+'</button></div><p class="err" data-err hidden></p></form>'
+    :'<div class="card muted">'+T('Cria primeiro um produto na aba Produtos para poder registar vendas.')+'</div>';
   var tot=sum(DB.vendas,function(v){return v.qtd*v.precoVenda;});
-  var foot=DB.vendas.length?'<tfoot><tr><td colspan="7">Total vendido</td><td class="num">'+fmt(tot)+'</td><td></td></tr></tfoot>':'';
-  return banners(C)+
-  '<section class="sec"><h2>Nova venda</h2>'+form+'</section>'+
-  '<section class="sec"><h2>Vendas registadas</h2>'+table('<th>Data</th><th>Produto</th><th class="num">Qtd</th><th class="num">Preço real</th><th class="num">Preço vendido</th><th>Diferença</th><th class="num">Lucro</th><th class="num">Total</th><th></th>',rows,foot,'Ainda não há vendas registadas.')+
-  '<p class="hint">Diferença = (preço vendido − preço real) ÷ preço real. Valores negativos significam venda abaixo do custo.</p></section>';
+  var foot=DB.vendas.length?'<tfoot><tr><td colspan="7">'+T('Total vendido')+'</td><td class="num">'+fmt(tot)+'</td><td></td></tr></tfoot>':'';
+  return banners()+
+  '<section class="sec"><h2>'+T('Nova venda')+'</h2>'+form+'</section>'+
+  '<section class="sec"><h2>'+T('Vendas registadas')+'</h2>'+table(th(T('Data'))+th(T('Produto'))+th(T('Qtd'),'num')+th(T('Preço real'),'num')+th(T('Preço vendido'),'num')+th(T('Diferença'))+th(T('Lucro'),'num')+th(T('Total'),'num')+th(''),rows,foot,T('Ainda não há vendas registadas.'))+
+  '<p class="hint">'+T('Diferença = (preço vendido − preço real) ÷ preço real. Valores negativos significam venda abaixo do custo.')+'</p></section>';
 }
 
 function vCaixa(C){
   function row(sign,label,val){return '<tr><td class="sign">'+sign+'</td><td>'+label+'</td><td class="num">'+fmt(val)+'</td></tr>';}
-  return banners(C)+
-  '<section class="sec"><h2>Dinheiro em caixa</h2><div class="tablewrap"><table class="ledger"><tbody>'+
-    row('','Capital inicial (dinheiro base)',C.capital)+
-    row('+','Total vendido',C.vendido)+
-    row('−','Gasto em mercadoria',C.porCat.Mercadoria||0)+
-    row('−','Gasto em transporte',C.porCat.Transporte||0)+
-    row('−','Outros gastos',C.porCat.Outro||0)+
-    '<tr class="tot"><td class="sign">=</td><td>Dinheiro em caixa</td><td class="num">'+fmt(C.saldo)+'</td></tr>'+
+  return banners()+
+  '<section class="sec"><h2>'+T('Dinheiro em caixa')+'</h2><div class="tablewrap"><table class="ledger"><tbody>'+
+    row('',T('Capital inicial (dinheiro base)'),C.capital)+
+    row('+',T('Total vendido'),C.vendido)+
+    row('−',T('Gasto em mercadoria'),C.porCat.Mercadoria||0)+
+    row('−',T('Gasto em transporte'),C.porCat.Transporte||0)+
+    row('−',T('Outros gastos'),C.porCat.Outro||0)+
+    '<tr class="tot"><td class="sign">=</td><td>'+T('Dinheiro em caixa')+'</td><td class="num">'+fmt(C.saldo)+'</td></tr>'+
   '</tbody></table></div></section>'+
-  '<section class="sec"><h2>Para além da caixa</h2><div class="kpis">'+
-    '<div class="kpi"><span class="l">Lucro bruto das vendas</span><span class="v">'+fmt(C.lucro)+'</span></div>'+
-    '<div class="kpi"><span class="l">Stock restante ao preço real</span><span class="v">'+fmt(C.stockCusto)+'</span></div>'+
-    '<div class="kpi"><span class="l">Caixa + stock ao preço real</span><span class="v">'+fmt(C.patrimonio)+'</span></div>'+
+  '<section class="sec"><h2>'+T('Para além da caixa')+'</h2><div class="kpis">'+
+    '<div class="kpi"><span class="l">'+T('Lucro bruto das vendas')+'</span><span class="v">'+fmt(C.lucro)+'</span></div>'+
+    '<div class="kpi"><span class="l">'+T('Stock restante ao preço real')+'</span><span class="v">'+fmt(C.stockCusto)+'</span></div>'+
+    '<div class="kpi"><span class="l">'+T('Caixa + stock ao preço real')+'</span><span class="v">'+fmt(C.patrimonio)+'</span></div>'+
   '</div></section>';
 }
 
@@ -564,21 +575,21 @@ function vCrescimento(C){
   var rows=M.map(function(x,i){
     var prev=i>0?M[i-1].v:0;
     var gr=i>0&&prev>0?'<span class="chip '+(x.v>=prev?'good':'bad')+'">'+pct((x.v-prev)/prev*100)+'</span>':'<span class="chip neutral">—</span>';
-    return '<tr><td>'+monthLabel(x.k)+'</td><td class="num">'+fmt(x.v)+'</td><td class="num">'+fmt(x.g)+'</td><td class="num">'+fmt(x.l)+'</td><td>'+gr+'</td></tr>';
+    return '<tr><td>'+esc(monthLabel(x.k))+'</td><td class="num">'+fmt(x.v)+'</td><td class="num">'+fmt(x.g)+'</td><td class="num">'+fmt(x.l)+'</td><td>'+gr+'</td></tr>';
   }).join('');
   var cCaixa=C.capital>0?pct((C.saldo-C.capital)/C.capital*100):'—';
   var cPat=C.capital>0?pct((C.patrimonio-C.capital)/C.capital*100):'—';
   var last=M.length?M[M.length-1]:null,prev=M.length>1?M[M.length-2]:null;
   var mom=last&&prev&&prev.v>0?pct((last.v-prev.v)/prev.v*100):'—';
-  return banners(C)+
-  '<section class="sec"><h2>Crescimento da JINOKA</h2><div class="kpis">'+
-    '<div class="kpi"><span class="l">Crescimento da caixa</span><span class="v">'+cCaixa+'</span></div>'+
-    '<div class="kpi"><span class="l">Crescimento do património</span><span class="v">'+cPat+'</span></div>'+
-    '<div class="kpi"><span class="l">Vendas vs mês anterior</span><span class="v">'+mom+'</span></div>'+
-    '<div class="kpi"><span class="l">Lucro bruto</span><span class="v">'+fmt(C.lucro)+'</span></div>'+
-  '</div><p class="hint">Caixa = capital + vendas − gastos. Património = caixa + stock restante ao preço real. Ambos comparados com o capital inicial.</p></section>'+
-  '<section class="sec"><h2>Dinheiro em caixa ao longo do tempo</h2><div class="card"><div id="chart"></div></div></section>'+
-  '<section class="sec"><h2>Mês a mês</h2>'+table('<th>Mês</th><th class="num">Vendido</th><th class="num">Gastos</th><th class="num">Lucro bruto</th><th>Vendas vs mês anterior</th>',rows,'','Ainda não há movimentos.')+'</section>';
+  return banners()+
+  '<section class="sec"><h2>'+T('Crescimento da JINOKA')+'</h2><div class="kpis">'+
+    '<div class="kpi"><span class="l">'+T('Crescimento da caixa')+'</span><span class="v">'+cCaixa+'</span></div>'+
+    '<div class="kpi"><span class="l">'+T('Crescimento do património')+'</span><span class="v">'+cPat+'</span></div>'+
+    '<div class="kpi"><span class="l">'+T('Vendas vs mês anterior')+'</span><span class="v">'+mom+'</span></div>'+
+    '<div class="kpi"><span class="l">'+T('Lucro bruto')+'</span><span class="v">'+fmt(C.lucro)+'</span></div>'+
+  '</div><p class="hint">'+T('Caixa = capital + vendas − gastos. Património = caixa + stock restante ao preço real. Ambos comparados com o capital inicial.')+'</p></section>'+
+  '<section class="sec"><h2>'+T('Dinheiro em caixa ao longo do tempo')+'</h2><div class="card"><div id="chart"></div></div></section>'+
+  '<section class="sec"><h2>'+T('Mês a mês')+'</h2>'+table(th(T('Mês'))+th(T('Vendido'),'num')+th(T('Gastos'),'num')+th(T('Lucro bruto'),'num')+th(T('Vendas vs mês anterior')),rows,'',T('Ainda não há movimentos.'))+'</section>';
 }
 
 function niceTicks(min,max,count){
@@ -595,7 +606,7 @@ function drawChart(){
   if(+DB.capital.valor>0&&DB.capital.data)ev.push([DB.capital.data,+DB.capital.valor]);
   DB.vendas.forEach(function(v){ev.push([v.data,v.qtd*v.precoVenda]);});
   DB.gastos.forEach(function(g){ev.push([g.data,-g.valor]);});
-  if(!ev.length){box.innerHTML='<p class="muted">Ainda não há movimentos para desenhar.</p>';return;}
+  if(!ev.length){box.innerHTML='<p class="muted">'+T('Ainda não há movimentos para desenhar.')+'</p>';return;}
   ev.sort(function(a,b){return a[0]<b[0]?-1:a[0]>b[0]?1:0;});
   var pts=[],acc=0;
   ev.forEach(function(e){acc+=e[1];var l=pts[pts.length-1];if(l&&l.d===e[0])l.y=acc;else pts.push({d:e[0],y:acc});});
@@ -607,11 +618,11 @@ function drawChart(){
   var y0=ticks[0],y1=ticks[ticks.length-1],t0=pts[0].t,t1=pts[pts.length-1].t;
   var X=function(t){return t1===t0?m.l+iw/2:m.l+(t-t0)/(t1-t0)*iw;};
   var Y=function(v){return m.t+ih-(v-y0)/(y1-y0||1)*ih;};
-  var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Dinheiro em caixa ao longo do tempo">';
+  var s='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(T('Dinheiro em caixa ao longo do tempo'))+'">';
   ticks.forEach(function(v){var y=Y(v);s+='<line x1="'+m.l+'" x2="'+(W-m.r)+'" y1="'+y+'" y2="'+y+'" style="stroke:var(--line)" stroke-width="1"/><text x="'+(m.l-8)+'" y="'+(y+4)+'" text-anchor="end">'+kzShort(v)+'</text>';});
   var nx=Math.min(5,pts.length>1&&t1>t0?5:1);
   for(var i=0;i<nx;i++){
-    var t=nx===1?t0:t0+(t1-t0)*i/(nx-1),d=new Date(t),lab=String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0');
+    var t=nx===1?t0:t0+(t1-t0)*i/(nx-1),d=new Date(t),lab=pad(d.getDate())+'/'+pad(d.getMonth()+1);
     s+='<text x="'+X(t)+'" y="'+(H-8)+'" text-anchor="'+(nx===1?'middle':i===0?'start':i===nx-1?'end':'middle')+'">'+lab+'</text>';
   }
   var line=pts.map(function(p,i){return (i?'L':'M')+X(p.t).toFixed(1)+' '+Y(p.y).toFixed(1);}).join(' ');
@@ -633,44 +644,45 @@ function vAlertas(C){
   var P=C.prods.slice().sort(function(a,b){return order[stat(a)]-order[stat(b)]||a.atual-b.atual;});
   var out=P.filter(function(p){return stat(p)==='out';}),low=P.filter(function(p){return stat(p)==='low';});
   var alertVenda=sum(C.alerts,function(p){return Math.max(0,p.atual)*p.precoVenda;});
-  function items(list,kind){return list.map(function(p){return '<div class="aitem"><span><strong>'+esc(p.nome)+'</strong> · '+(kind==='out'?'sem unidades':p.atual+' em stock, mínimo '+p.minimo)+'</span><span><span class="chip '+(kind==='out'?'bad':'warn')+'">'+(kind==='out'?'Esgotado':'Stock baixo')+'</span> <button class="btn ghost sm" type="button" data-act="restock" data-id="'+p.id+'">Repor</button></span></div>';}).join('');}
+  function items(list,kind){return list.map(function(p){return '<div class="aitem"><span><strong>'+esc(p.nome)+'</strong> · '+(kind==='out'?T('sem unidades'):T('{0} em stock, mínimo {1}',[p.atual,p.minimo]))+'</span><span><span class="chip '+(kind==='out'?'bad':'warn')+'">'+(kind==='out'?T('Esgotado'):T('Stock baixo'))+'</span> <button class="btn ghost sm" type="button" data-act="restock" data-id="'+p.id+'">'+T('Repor')+'</button></span></div>';}).join('');}
   var rows=P.map(function(p){var q=Math.max(0,p.atual);return '<tr><td><strong>'+esc(p.nome)+'</strong></td><td class="num">'+p.atual+'</td><td class="num">'+p.minimo+'</td><td>'+statChip(p)+'</td><td class="num">'+fmt(p.precoVenda)+'</td><td class="num">'+fmt(q*p.precoVenda)+'</td><td class="num">'+fmt(q*(p.precoVenda-p.custo))+'</td></tr>';}).join('');
-  var foot=P.length?'<tfoot><tr><td colspan="5">Total a arrecadar</td><td class="num">'+fmt(C.stockVenda)+'</td><td class="num">'+fmt(C.stockVenda-C.stockCusto)+'</td></tr></tfoot>':'';
-  return banners(C)+
-  '<section class="sec"><h2>Alertas de stock</h2>'+
-    (C.alerts.length?'<div class="alist">'+items(out,'out')+items(low,'low')+'</div>':'<div class="tablewrap"><div class="empty">Todos os produtos têm stock acima do mínimo.</div></div>')+'</section>'+
-  '<section class="sec"><h2>O que o stock restante vai render</h2><div class="kpis">'+
-    '<div class="kpi"><span class="l">Produtos em alerta</span><span class="v">'+C.alerts.length+'</span></div>'+
-    '<div class="kpi"><span class="l">A arrecadar com todo o stock</span><span class="v">'+fmt(C.stockVenda)+'</span></div>'+
-    '<div class="kpi"><span class="l">A arrecadar só dos produtos em alerta</span><span class="v">'+fmt(alertVenda)+'</span></div>'+
-    '<div class="kpi"><span class="l">Lucro previsto do stock</span><span class="v">'+fmt(C.stockVenda-C.stockCusto)+'</span></div>'+
-  '</div>'+table('<th>Produto</th><th class="num">Em stock</th><th class="num">Mínimo</th><th>Estado</th><th class="num">Venda prevista</th><th class="num">A arrecadar</th><th class="num">Lucro previsto</th>',rows,foot,'Ainda não há produtos.')+
-  '<p class="hint">A arrecadar = unidades em stock × preço de venda previsto de cada produto.</p></section>';
+  var foot=P.length?'<tfoot><tr><td colspan="5">'+T('Total a arrecadar')+'</td><td class="num">'+fmt(C.stockVenda)+'</td><td class="num">'+fmt(C.stockVenda-C.stockCusto)+'</td></tr></tfoot>':'';
+  return banners()+
+  '<section class="sec"><h2>'+T('Alertas de stock')+'</h2>'+
+    (C.alerts.length?'<div class="alist">'+items(out,'out')+items(low,'low')+'</div>':'<div class="tablewrap"><div class="empty">'+T('Todos os produtos têm stock acima do mínimo.')+'</div></div>')+'</section>'+
+  '<section class="sec"><h2>'+T('O que o stock restante vai render')+'</h2><div class="kpis">'+
+    '<div class="kpi"><span class="l">'+T('Produtos em alerta')+'</span><span class="v">'+C.alerts.length+'</span></div>'+
+    '<div class="kpi"><span class="l">'+T('A arrecadar com todo o stock')+'</span><span class="v">'+fmt(C.stockVenda)+'</span></div>'+
+    '<div class="kpi"><span class="l">'+T('A arrecadar só dos produtos em alerta')+'</span><span class="v">'+fmt(alertVenda)+'</span></div>'+
+    '<div class="kpi"><span class="l">'+T('Lucro previsto do stock')+'</span><span class="v">'+fmt(C.stockVenda-C.stockCusto)+'</span></div>'+
+  '</div>'+table(th(T('Produto'))+th(T('Em stock'),'num')+th(T('Mínimo'),'num')+th(T('Estado'))+th(T('Venda prevista'),'num')+th(T('A arrecadar'),'num')+th(T('Lucro previsto'),'num'),rows,foot,T('Ainda não há produtos.'))+
+  '<p class="hint">'+T('A arrecadar = unidades em stock × preço de venda previsto de cada produto.')+'</p></section>';
 }
 
 function vConfig(C){
-  var bk=DB.lastBackup?new Date(DB.lastBackup).toLocaleDateString('pt-PT'):'nunca';
-  return banners(C)+
-  '<section class="sec"><h2>Conta</h2><div class="card stack"><p>Gmail registado: <strong>'+esc(auth.email)+'</strong></p>'+
-    '<form id="f-senha" class="stack" novalidate><h3>Alterar a senha</h3><div class="form">'+
-    fld('Senha atual','atual',{id:'x-atual',type:'password',attrs:'autocomplete="current-password"'})+
-    fld('Nova senha','nova',{id:'x-nova',type:'password',attrs:'autocomplete="new-password"'})+
-    fld('Repetir a nova senha','nova2',{id:'x-nova2',type:'password',attrs:'autocomplete="new-password"'})+
-    '<button class="btn" type="submit">Alterar senha</button></div><p class="err" data-err hidden></p></form>'+
-    '<form id="f-chave" class="stack" novalidate><h3>Nova chave de recuperação</h3><p class="muted">Cria uma chave nova e invalida a anterior.</p><div class="form">'+
-    fld('Senha atual','atual',{id:'k2-atual',type:'password',attrs:'autocomplete="current-password"'})+
-    '<button class="btn" type="submit">Gerar nova chave</button></div><p class="err" data-err hidden></p></form></div></section>'+
-  '<section class="sec"><h2>Cópia de segurança</h2><div class="card stack"><p class="muted">Os dados ficam guardados neste navegador. Guarda uma cópia de vez em quando para não os perderes. A cópia não leva a senha. Última cópia: <strong>'+bk+'</strong>.</p>'+
-    '<div class="actions" style="justify-content:flex-start"><button class="btn" type="button" data-act="backup">Guardar cópia</button><label class="btn ghost" for="f-file">Restaurar cópia</label><input id="f-file" type="file" accept=".json,application/json" hidden></div></div></section>'+
-  '<section class="sec"><h2>Apagar tudo</h2><div class="card stack"><p class="muted">Apaga produtos, vendas, gastos e capital. A conta e a senha mantêm-se.</p><div><button class="btn danger" type="button" data-act="wipe">Apagar todos os dados</button></div></div></section>';
+  var bk=DB.lastBackup?new Date(DB.lastBackup).toLocaleDateString(LOC[LANG]):T('nunca');
+  var act=user&&user.email_confirmed_at?'<p class="notice good">'+T('Conta ativada em {0}',[fmtTS(user.email_confirmed_at)])+'</p>':'<p class="notice">'+T('Conta ainda não confirmada.')+'</p>';
+  return banners()+
+  '<section class="sec"><h2>'+T('Idioma')+'</h2><div class="card stack"><div class="field"><label for="x-lang">'+T('Idioma da aplicação')+'</label><select id="x-lang">'+LANGS.map(function(l){return '<option value="'+l[0]+'"'+(l[0]===LANG?' selected':'')+'>'+l[1]+'</option>';}).join('')+'</select></div></div></section>'+
+  '<section class="sec"><h2>'+T('Conta')+'</h2><div class="card stack"><p>'+T('Conta')+': <strong>'+esc(user?user.email:'')+'</strong></p>'+act+
+    '<form id="f-senha" class="stack" novalidate><h3>'+T('Alterar a senha')+'</h3><div class="form">'+
+    fld(T('Senha atual'),'atual',{id:'x-atual',type:'password',attrs:'autocomplete="current-password"'})+
+    fld(T('Nova senha'),'nova',{id:'x-nova',type:'password',attrs:'autocomplete="new-password"'})+
+    fld(T('Repetir a nova senha'),'nova2',{id:'x-nova2',type:'password',attrs:'autocomplete="new-password"'})+
+    '<button class="btn" type="submit">'+T('Alterar senha')+'</button></div><p class="err" data-err hidden></p></form></div></section>'+
+  '<section class="sec"><h2>'+T('Cópia de segurança')+'</h2><div class="card stack"><p class="muted">'+T('Os dados ficam guardados na tua conta, na nuvem, e abrem em qualquer aparelho. Mesmo assim, guarda uma cópia de vez em quando.')+' '+T('Última cópia')+': <strong>'+bk+'</strong>.</p>'+
+    '<div class="actions left"><button class="btn" type="button" data-act="share-backup">'+T('Guardar no Google Drive')+'</button><button class="btn ghost" type="button" data-act="backup">'+T('Guardar no aparelho')+'</button><label class="btn ghost" for="f-file">'+T('Restaurar cópia')+'</label><input id="f-file" type="file" accept=".json,.txt,application/json,text/plain" hidden></div>'+
+    '<p class="hint">'+T('Para guardar no Drive: toca em "Guardar no Google Drive", escolhe Drive na lista que abre, depois a conta Google e a pasta.')+'</p></div></section>'+
+  '<section class="sec"><h2>'+T('Apagar tudo')+'</h2><div class="card stack"><p class="muted">'+T('Apaga produtos, vendas, gastos e capital. A conta e a senha mantêm-se.')+'</p><div><button class="btn danger" type="button" data-act="wipe">'+T('Apagar todos os dados')+'</button></div></div></section>';
 }
 
 var VIEWS={painel:vPainel,capital:vCapital,produtos:vProdutos,vendas:vVendas,crescimento:vCrescimento,caixa:vCaixa,alertas:vAlertas,config:vConfig};
-var TABS=[['painel','Painel'],['capital','Capital e gastos'],['produtos','Produtos'],['vendas','Vendas'],['crescimento','Crescimento'],['caixa','Caixa'],['alertas','Alertas'],['config','Definições']];
+var TABKEYS=['painel','capital','produtos','vendas','crescimento','caixa','alertas','config'];
+function tabLabel(k){return k==='painel'?T('Painel'):k==='capital'?T('Capital e gastos'):k==='produtos'?T('Produtos'):k==='vendas'?T('Vendas'):k==='crescimento'?T('Crescimento'):k==='caixa'?T('Caixa'):k==='alertas'?T('Alertas'):T('Definições');}
 function render(){
   if(!unlocked||!DB)return;
   var C=calc(),row=$('#tabs'),sl=row.scrollLeft;
-  row.innerHTML=TABS.map(function(t){return '<button class="tab" type="button" data-tab="'+t[0]+'"'+(t[0]===tab?' aria-current="page"':'')+'>'+t[1]+(t[0]==='alertas'&&C.alerts.length?'<span class="badge" aria-label="'+C.alerts.length+' em alerta">'+C.alerts.length+'</span>':'')+'</button>';}).join('');
+  row.innerHTML=TABKEYS.map(function(k){return '<button class="tab" type="button" data-tab="'+k+'"'+(k===tab?' aria-current="page"':'')+'>'+tabLabel(k)+(k==='alertas'&&C.alerts.length?'<span class="badge" aria-label="'+esc(T('{0} em alerta',[C.alerts.length]))+'">'+C.alerts.length+'</span>':'')+'</button>';}).join('');
   row.scrollLeft=sl;
   $('#main').innerHTML=VIEWS[tab](C);
   if(tab==='crescimento')drawChart();
@@ -691,198 +703,225 @@ function onProdutoVenda(){
 function updateVendaPreview(){
   var el=$('#v-prev');if(!el)return;
   var pv=num($('#v-pv').value),pr=num($('#v-pr').value),q=parseInt($('#v-qtd').value,10)||0;
-  if(isNaN(pv)||isNaN(pr)||!(pr>0)){el.textContent='Confirma o preço real e o preço de venda para ver a diferença.';return;}
+  if(isNaN(pv)||isNaN(pr)||!(pr>0)){el.textContent=T('Confirma o preço real e o preço de venda para ver a diferença.');return;}
   var d=(pv-pr)/pr*100;
-  el.innerHTML='Diferença: <strong class="'+(d>=0?'pos':'neg')+'">'+pct(d)+'</strong> por unidade · Lucro desta venda: <strong>'+fmt((pv-pr)*q)+'</strong> · Total: <strong>'+fmt(pv*q)+'</strong>';
+  el.innerHTML=T('Diferença')+': <strong class="'+(d>=0?'pos':'neg')+'">'+pct(d)+'</strong> '+T('por unidade')+' · '+T('Lucro desta venda')+': <strong>'+fmt((pv-pr)*q)+'</strong> · '+T('Total')+': <strong>'+fmt(pv*q)+'</strong>';
 }
 
 /* ---------- formulários ---------- */
 function ferr(f,msg){var e=f.querySelector('[data-err]');if(e){if(msg)showErr(e,msg);else e.hidden=true;}return false;}
 var FORMS={};
-FORMS['a-setup']=async function(fd,f){
+FORMS['a-login']=async function(fd,f){
+  var err=$('#l-err');err.hidden=true;
+  var email=String(fd.get('email')||'').trim().toLowerCase(),pw=String(fd.get('pw')||'');
+  if(!email||!pw)return showErr(err,T('Escreve o Gmail e a senha.'));
+  setBusy(f,true,T('A entrar...'));
+  var r=await sb.auth.signInWithPassword({email:email,password:pw});
+  setBusy(f,false);
+  if(r.error)return showErr(err,mapAuthError(r.error));
+  user=r.data.user;await enterApp();
+};
+FORMS['a-signup']=async function(fd,f){
   var err=$('#s-err');err.hidden=true;
   var email=String(fd.get('email')||'').trim().toLowerCase(),pw=String(fd.get('pw')||''),pw2=String(fd.get('pw2')||'');
-  if(!validEmail(email))return showErr(err,'Escreve um endereço Gmail válido, terminado em @gmail.com.');
-  if(!validPw(pw))return showErr(err,'A senha precisa de pelo menos 8 caracteres, com letras e números.');
-  if(pw!==pw2)return showErr(err,'As duas senhas não são iguais.');
-  setBusy(f,true,'A criar acesso...');
-  try{
-    var c=await makeCreds(pw),rec=Object.assign({email:email,created:Date.now()},c.part);
-    showKey(c.key,'Guarda a chave de recuperação',function(){auth=rec;sset(AUTH_KEY,JSON.stringify(rec));clearFails();enterApp();});
-  }catch(e){showErr(err,'Não foi possível criar o acesso neste navegador.');}
+  if(!validEmail(email))return showErr(err,T('Escreve um endereço Gmail válido, terminado em @gmail.com.'));
+  if(!validPw(pw))return showErr(err,T('A senha precisa de pelo menos 8 caracteres, com letras e números.'));
+  if(pw!==pw2)return showErr(err,T('As duas senhas não são iguais.'));
+  setBusy(f,true,T('A enviar...'));
+  var r=await sb.auth.signUp({email:email,password:pw,options:{emailRedirectTo:HOME}});
   setBusy(f,false);
+  if(r.error)return showErr(err,mapAuthError(r.error));
+  if(r.data.session){user=r.data.user;await enterApp();return;}
+  if(r.data.user&&r.data.user.identities&&r.data.user.identities.length===0)return showErr(err,T('Este Gmail já tem conta. Entra ou recupera a senha.'));
+  showAuth('a-sent');$('#sent-email').textContent=email;
 };
-FORMS['a-login']=async function(fd,f){
-  var err=$('#l-err');
-  var w=lockedFor();if(w>0){refreshLock();return;}
-  var pw=String(fd.get('pw')||'');
-  if(!pw)return showErr(err,'Escreve a tua senha.');
-  setBusy(f,true);
-  var ok=false;try{ok=await verifyPw(pw);}catch(e){}
+FORMS['a-activate']=async function(fd,f){
+  var err=$('#t-err'),ok=$('#t-ok');err.hidden=true;ok.hidden=true;
+  var email=String(fd.get('email')||'').trim().toLowerCase();
+  if(!validEmail(email))return showErr(err,T('Escreve o Gmail da conta.'));
+  setBusy(f,true,T('A enviar...'));
+  var r=await sb.auth.resend({type:'signup',email:email,options:{emailRedirectTo:HOME}});
   setBusy(f,false);
-  if(ok){clearFails();enterApp();return;}
-  var s=registerFail();$('#l-pw').value='';
-  if(s.until>Date.now())refreshLock();
-  else showErr(err,'Senha incorreta. Restam '+Math.max(0,5-s.fails)+' tentativas antes de um bloqueio temporário.');
+  if(r.error)return showErr(err,mapAuthError(r.error));
+  ok.textContent=T('Se esta conta ainda não estiver ativada, enviámos um novo link de ativação para o teu Gmail. Procura também no Spam.');ok.hidden=false;
 };
-FORMS['a-recover']=async function(fd,f){
+FORMS['a-forgot']=async function(fd,f){
+  var err=$('#f-err'),ok=$('#f-ok');err.hidden=true;ok.hidden=true;
+  var email=String(fd.get('email')||'').trim().toLowerCase();
+  if(!validEmail(email))return showErr(err,T('Escreve o Gmail da conta.'));
+  setBusy(f,true,T('A enviar...'));
+  var r=await sb.auth.resetPasswordForEmail(email,{redirectTo:HOME});
+  setBusy(f,false);
+  if(r.error)return showErr(err,mapAuthError(r.error));
+  ok.textContent=T('Se este Gmail tiver conta, enviámos um link para criares uma nova senha. Procura também no Spam.');ok.hidden=false;
+};
+FORMS['a-reset']=async function(fd,f){
   var err=$('#r-err');err.hidden=true;
-  var w=lockedFor();if(w>0)return showErr(err,'Demasiadas tentativas. Espera '+fmtWait(w)+' para tentar outra vez.');
-  var email=String(fd.get('email')||'').trim().toLowerCase(),key=normKey(fd.get('key')),pw=String(fd.get('pw')||''),pw2=String(fd.get('pw2')||'');
-  if(!email||!key)return showErr(err,'Escreve o Gmail e a chave de recuperação.');
-  if(!validPw(pw))return showErr(err,'A nova senha precisa de pelo menos 8 caracteres, com letras e números.');
-  if(pw!==pw2)return showErr(err,'As duas senhas não são iguais.');
-  setBusy(f,true);
-  var ok=false;
-  try{ok=email===auth.email&&safeEq(await derive(key,auth.rsalt),auth.rhash);}catch(e){}
-  if(!ok){setBusy(f,false);var s=registerFail();return showErr(err,s.until>Date.now()?'Demasiadas tentativas. Tenta mais tarde.':'Gmail ou chave incorretos.');}
-  try{
-    var c=await makeCreds(pw);
-    auth=Object.assign({},auth,c.part);sset(AUTH_KEY,JSON.stringify(auth));clearFails();
-    setBusy(f,false);
-    showKey(c.key,'Senha alterada. Guarda a nova chave',function(){enterApp();});
-  }catch(e){setBusy(f,false);showErr(err,'Não foi possível alterar a senha.');}
+  var pw=String(fd.get('pw')||''),pw2=String(fd.get('pw2')||'');
+  if(!validPw(pw))return showErr(err,T('A senha precisa de pelo menos 8 caracteres, com letras e números.'));
+  if(pw!==pw2)return showErr(err,T('As duas senhas não são iguais.'));
+  setBusy(f,true,T('A guardar...'));
+  var r=await sb.auth.updateUser({password:pw});
+  setBusy(f,false);
+  if(r.error)return showErr(err,mapAuthError(r.error));
+  recovering=false;toast(T('Senha alterada.'));
+  var g=await sb.auth.getSession(),ses=g&&g.data&&g.data.session;
+  if(ses){user=ses.user;await enterApp();}else showAuth('a-login');
 };
 FORMS['f-capital']=function(fd,f){
   var v=num(fd.get('valor')),d=String(fd.get('data')||'');
-  if(isNaN(v)||v<0)return ferr(f,'Escreve o valor do capital inicial.');
-  if(!d)return ferr(f,'Escolhe a data do capital.');
+  if(isNaN(v)||v<0)return ferr(f,T('Escreve o valor do capital inicial.'));
+  if(!d)return ferr(f,T('Escolhe a data do capital.'));
   DB.capital={valor:v,data:d,nota:String(fd.get('nota')||'').trim(),ex:false};
-  save();toast('Capital guardado.');render();
+  save();toast(T('Capital guardado.'));render();
 };
 FORMS['f-gasto']=function(fd,f){
   var cat=String(fd.get('categoria')),v=num(fd.get('valor')),d=String(fd.get('data')||''),j=String(fd.get('justificacao')||'').trim();
-  if(!(v>0))return ferr(f,'Escreve o valor gasto.');
-  if(!d)return ferr(f,'Escolhe a data do gasto.');
-  if(cat==='Outro'&&j.length<5)return ferr(f,'Gastos do tipo “Outro” precisam de justificação.');
-  DB.gastos.push({id:uid(),data:d,categoria:cat,valor:v,justificacao:j});
-  save();toast('Gasto registado.');render();
+  if(!(v>0))return ferr(f,T('Escreve o valor gasto.'));
+  if(!d)return ferr(f,T('Escolhe a data do gasto.'));
+  if(cat==='Outro'&&j.length<5)return ferr(f,T('Gastos do tipo "Outro" precisam de justificação.'));
+  DB.gastos.push({id:uid(),data:d,categoria:cat,valor:v,justificacao:j,ts:new Date().toISOString()});
+  save();toast(T('Gasto registado.'));render();
 };
 FORMS['f-produto']=function(fd,f){
   var nome=String(fd.get('nome')||'').trim(),q=parseInt(fd.get('qtd'),10),c=num(fd.get('custo')),pv=num(fd.get('pv')),mn=parseInt(fd.get('min'),10);
-  if(!nome)return ferr(f,'Escreve o nome do produto.');
-  if(DB.produtos.some(function(p){return p.nome.toLowerCase()===nome.toLowerCase();}))return ferr(f,'Já existe um produto com este nome.');
-  if(!(q>=1))return ferr(f,'A quantidade comprada tem de ser pelo menos 1.');
-  if(isNaN(c)||c<0)return ferr(f,'Escreve o preço real por unidade.');
-  if(isNaN(pv)||pv<0)return ferr(f,'Escreve o preço de venda previsto.');
-  DB.produtos.push({id:uid(),nome:nome,qtdEntrada:q,custo:c,precoVenda:pv,minimo:isNaN(mn)||mn<0?0:mn});
-  save();toast('Produto adicionado.');render();
+  if(!nome)return ferr(f,T('Escreve o nome do produto.'));
+  if(DB.produtos.some(function(p){return p.nome.toLowerCase()===nome.toLowerCase();}))return ferr(f,T('Já existe um produto com este nome.'));
+  if(!(q>=1))return ferr(f,T('A quantidade comprada tem de ser pelo menos 1.'));
+  if(isNaN(c)||c<0)return ferr(f,T('Escreve o preço real por unidade.'));
+  if(isNaN(pv)||pv<0)return ferr(f,T('Escreve o preço de venda previsto.'));
+  DB.produtos.push({id:uid(),nome:nome,qtdEntrada:q,custo:c,precoVenda:pv,minimo:isNaN(mn)||mn<0?0:mn,criadoEm:new Date().toISOString()});
+  save();toast(T('Produto adicionado.'));render();
 };
 FORMS['f-venda']=function(fd,f){
   var id=String(fd.get('produtoId')),C=calc(),p=C.prods.find(function(x){return x.id===id;});
   var d=String(fd.get('data')||''),q=parseInt(fd.get('qtd'),10),pr=num(fd.get('precoReal')),pv=num(fd.get('precoVenda'));
-  if(!p)return ferr(f,'Escolhe o produto vendido.');
-  if(!d)return ferr(f,'Escolhe a data da venda.');
-  if(!(q>=1))return ferr(f,'A quantidade tem de ser pelo menos 1.');
-  if(q>p.atual)return ferr(f,'Só há '+p.atual+' unidades de “'+p.nome+'” em stock.');
-  if(isNaN(pr)||pr<=0)return ferr(f,'Escreve o preço real do produto.');
-  if(isNaN(pv)||pv<0)return ferr(f,'Escreve o preço a que vendeste.');
-  DB.vendas.push({id:uid(),data:d,produtoId:id,qtd:q,precoVenda:pv,precoReal:pr});
+  if(!p)return ferr(f,T('Escolhe o produto vendido.'));
+  if(!d)return ferr(f,T('Escolhe a data da venda.'));
+  if(!(q>=1))return ferr(f,T('A quantidade tem de ser pelo menos 1.'));
+  if(q>p.atual)return ferr(f,T('Só há {0} unidades de "{1}" em stock.',[p.atual,p.nome]));
+  if(isNaN(pr)||pr<=0)return ferr(f,T('Escreve o preço real do produto.'));
+  if(isNaN(pv)||pv<0)return ferr(f,T('Escreve o preço a que vendeste.'));
+  DB.vendas.push({id:uid(),data:d,produtoId:id,qtd:q,precoVenda:pv,precoReal:pr,ts:new Date().toISOString()});
   save();
-  var df=(pv-pr)/pr*100;
-  toast('Venda registada ('+pct(df)+' sobre o preço real).');render();
+  toast(T('Venda registada ({0} sobre o preço real).',[pct((pv-pr)/pr*100)]));render();
 };
 FORMS['f-senha']=async function(fd,f){
   ferr(f);
   var a=String(fd.get('atual')||''),n=String(fd.get('nova')||''),n2=String(fd.get('nova2')||'');
-  if(!validPw(n))return ferr(f,'A nova senha precisa de pelo menos 8 caracteres, com letras e números.');
-  if(n!==n2)return ferr(f,'As duas senhas novas não são iguais.');
-  setBusy(f,true);
-  if(!(await verifyPw(a))){setBusy(f,false);return ferr(f,'A senha atual está incorreta.');}
-  var salt=b64e(rnd(16));auth=Object.assign({},auth,{salt:salt,hash:await derive(n,salt)});
-  sset(AUTH_KEY,JSON.stringify(auth));setBusy(f,false);f.reset();toast('Senha alterada.');
-};
-FORMS['f-chave']=async function(fd,f){
-  ferr(f);
-  var a=String(fd.get('atual')||'');
-  setBusy(f,true);
-  if(!(await verifyPw(a))){setBusy(f,false);return ferr(f,'A senha atual está incorreta.');}
-  var key=newRecoveryKey(),rsalt=b64e(rnd(16));
-  auth=Object.assign({},auth,{rsalt:rsalt,rhash:await derive(normKey(key),rsalt)});
-  sset(AUTH_KEY,JSON.stringify(auth));setBusy(f,false);f.reset();
-  openModal({title:'Nova chave de recuperação',body:'<p class="muted">A chave anterior deixou de funcionar. Guarda esta fora deste aparelho.</p><div class="keybox" id="m-key">'+esc(key)+'</div>',confirmText:'Já guardei',onSubmit:function(){}});
+  if(!validPw(n))return ferr(f,T('A nova senha precisa de pelo menos 8 caracteres, com letras e números.'));
+  if(n!==n2)return ferr(f,T('As duas senhas novas não são iguais.'));
+  setBusy(f,true,T('A guardar...'));
+  var c=await sb.auth.signInWithPassword({email:user.email,password:a});
+  if(c.error){setBusy(f,false);return ferr(f,T('A senha atual está incorreta.'));}
+  var u=await sb.auth.updateUser({password:n});
+  setBusy(f,false);
+  if(u.error)return ferr(f,mapAuthError(u.error));
+  f.reset();toast(T('Senha alterada.'));
 };
 document.addEventListener('submit',function(e){
   var f=e.target;if(!f.id||!FORMS[f.id])return;
   e.preventDefault();FORMS[f.id](new FormData(f),f);
 });
 
-/* ---------- ações ---------- */
-function backupJSON(){return JSON.stringify({app:'JINOKA',versao:1,exportado:new Date().toISOString(),dados:{capital:DB.capital,gastos:DB.gastos,produtos:DB.produtos,vendas:DB.vendas}},null,1);}
-async function doBackup(){
-  var json=backupJSON(),dl=null;
-  try{dl=window.claude&&window.claude.use?await window.claude.use('downloads'):null;}catch(e){}
-  if(dl){
-    try{await dl.save({filename:'jinoka-copia-'+today()+'.json',data:json});DB.lastBackup=Date.now();save();toast('Cópia guardada.');render();return;}
-    catch(e){if(e&&e.code==='declined')return;}
+/* ---------- cópias de segurança ---------- */
+function backupJSON(){return JSON.stringify({app:'JINOKA',versao:2,exportado:new Date().toISOString(),dados:{capital:DB.capital,gastos:DB.gastos,produtos:DB.produtos,vendas:DB.vendas,idioma:DB.idioma}},null,1);}
+function backupName(){return 'jinoka-copia-'+today()+'.json';}
+function markBackup(){DB.lastBackup=Date.now();save();render();}
+function doBackup(){
+  var json=backupJSON();
+  try{
+    var blob=new Blob([json],{type:'application/json'}),a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);a.download=backupName();document.body.appendChild(a);a.click();a.remove();
+    setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
+    toast(T('Cópia guardada no aparelho.'));markBackup();
+  }catch(e){
+    openModal({title:T('Copiar os dados'),body:'<p class="muted">'+T('Copia este texto e guarda-o numa nota.')+'</p><textarea id="m-json" readonly rows="8" style="font-family:var(--font-mono);font-size:12px">'+esc(json)+'</textarea>',confirmText:T('Fechar'),onSubmit:function(){markBackup();}});
   }
-  openModal({title:'Copiar os dados',body:'<p class="muted">Copia este texto e guarda-o num ficheiro ou numa nota. Para restaurar, cola-o num ficheiro .json.</p><textarea id="m-json" readonly rows="8" style="font-family:var(--font-mono);font-size:12px">'+esc(json)+'</textarea>',confirmText:'Fechar',onSubmit:function(){DB.lastBackup=Date.now();save();}});
-  var ta=$('#m-json');if(ta)ta.select();
 }
+async function shareBackup(){
+  var json=backupJSON(),files=[];
+  try{
+    if(typeof File==='function'){files=[new File([json],backupName(),{type:'application/json'}),new File([json],backupName()+'.txt',{type:'text/plain'})];}
+    for(var i=0;i<files.length;i++){
+      if(navigator.canShare&&navigator.canShare({files:[files[i]]})){
+        await navigator.share({files:[files[i]],title:'JINOKA',text:T('Cópia de segurança da JINOKA')});
+        toast(T('Cópia enviada.'));markBackup();return;
+      }
+    }
+  }catch(e){if(e&&e.name==='AbortError')return;}
+  toast(T('Este aparelho não permite partilhar ficheiros. A guardar no aparelho.'));
+  doBackup();
+}
+
+/* ---------- ações ---------- */
 var ACTS={
-  'clear-examples':function(){confirmModal('Apagar os exemplos','Isto remove o capital, os produtos, as vendas e os gastos de exemplo. Os teus registos ficam.',function(){
+  'reload':function(){location.reload();},
+  'clear-examples':function(){confirmModal(T('Apagar os exemplos'),T('Isto remove o capital, os produtos, as vendas e os gastos de exemplo. Os teus registos ficam.'),function(){
     DB.produtos=DB.produtos.filter(function(p){return !p.ex;});
     var ids={};DB.produtos.forEach(function(p){ids[p.id]=1;});
     DB.vendas=DB.vendas.filter(function(v){return !v.ex&&ids[v.produtoId];});
     DB.gastos=DB.gastos.filter(function(g){return !g.ex;});
     if(DB.capital.ex)DB.capital={valor:0,data:today(),nota:'',ex:false};
-    save();render();toast('Exemplos apagados.');
-  },'Apagar exemplos');},
-  'del-gasto':function(id){confirmModal('Apagar gasto','Este gasto deixa de contar para a caixa.',function(){DB.gastos=DB.gastos.filter(function(g){return g.id!==id;});save();render();});},
-  'del-venda':function(id){confirmModal('Apagar venda','As unidades voltam ao stock e o valor sai do total vendido.',function(){DB.vendas=DB.vendas.filter(function(v){return v.id!==id;});save();render();});},
+    save();render();toast(T('Exemplos apagados.'));
+  },T('Apagar exemplos'));},
+  'del-gasto':function(id){confirmModal(T('Apagar gasto'),T('Este gasto deixa de contar para a caixa.'),function(){DB.gastos=DB.gastos.filter(function(g){return g.id!==id;});save();render();});},
+  'del-venda':function(id){confirmModal(T('Apagar venda'),T('As unidades voltam ao stock e o valor sai do total vendido.'),function(){DB.vendas=DB.vendas.filter(function(v){return v.id!==id;});save();render();});},
   'del-produto':function(id){
     var p=calc().prods.find(function(x){return x.id===id;});if(!p)return;
-    if(p.sold>0)return toast('Este produto tem vendas registadas e não pode ser apagado.');
-    confirmModal('Apagar produto','“'+p.nome+'” deixa de existir no stock.',function(){DB.produtos=DB.produtos.filter(function(x){return x.id!==id;});save();render();});
+    if(p.sold>0)return toast(T('Este produto tem vendas registadas e não pode ser apagado.'));
+    confirmModal(T('Apagar produto'),T('"{0}" deixa de existir no stock.',[p.nome]),function(){DB.produtos=DB.produtos.filter(function(x){return x.id!==id;});save();render();});
   },
   'restock':function(id){
     var p=calc().prods.find(function(x){return x.id===id;});if(!p)return;
-    openModal({title:'Repor stock de '+p.nome,body:'<p class="muted">Em stock agora: '+p.atual+' unidades.</p>'+fld('Unidades a acrescentar','qtd',{id:'m-qtd',type:'number',attrs:numAttrs(1,1)}),confirmText:'Repor',onSubmit:function(fd){
-      var q=parseInt(fd.get('qtd'),10);if(!(q>=1))return {error:'Escreve quantas unidades chegaram.'};
-      DB.produtos.find(function(x){return x.id===id;}).qtdEntrada+=q;save();render();toast('Stock reposto.');
+    openModal({title:T('Repor stock de {0}',[p.nome]),body:'<p class="muted">'+T('Em stock agora: {0} unidades.',[p.atual])+'</p>'+fld(T('Unidades a acrescentar'),'qtd',{id:'m-qtd',type:'number',attrs:numAttrs(1,1)}),confirmText:T('Repor'),onSubmit:function(fd){
+      var q=parseInt(fd.get('qtd'),10);if(!(q>=1))return {error:T('Escreve quantas unidades chegaram.')};
+      DB.produtos.find(function(x){return x.id===id;}).qtdEntrada+=q;save();render();toast(T('Stock reposto.'));
     }});
   },
   'edit-produto':function(id){
     var p=calc().prods.find(function(x){return x.id===id;});if(!p)return;
-    openModal({title:'Editar produto',body:fld('Nome','nome',{id:'m-nome',value:p.nome})+fld('Quantidade total comprada','qtd',{id:'m-q',type:'number',attrs:numAttrs(Math.max(0,p.sold),1),value:p.qtdEntrada})+fld('Preço real (custo por unidade)','custo',{id:'m-c',type:'number',attrs:numAttrs(0),value:p.custo})+fld('Preço de venda previsto','pv',{id:'m-pv',type:'number',attrs:numAttrs(0),value:p.precoVenda})+fld('Avisar quando restarem','min',{id:'m-min',type:'number',attrs:numAttrs(0,1),value:p.minimo})+'<p class="hint">Mudar o preço real não altera vendas já registadas.</p>',onSubmit:function(fd){
+    openModal({title:T('Editar produto'),body:fld(T('Nome'),'nome',{id:'m-nome',value:p.nome})+fld(T('Quantidade total comprada'),'qtd',{id:'m-q',type:'number',attrs:numAttrs(Math.max(0,p.sold),1),value:p.qtdEntrada})+fld(T('Preço real (custo por unidade)'),'custo',{id:'m-c',type:'number',attrs:numAttrs(0),value:p.custo})+fld(T('Preço de venda previsto'),'pv',{id:'m-pv',type:'number',attrs:numAttrs(0),value:p.precoVenda})+fld(T('Avisar quando restarem'),'min',{id:'m-min',type:'number',attrs:numAttrs(0,1),value:p.minimo})+'<p class="hint">'+T('Mudar o preço real não altera vendas já registadas.')+'</p>',onSubmit:function(fd){
       var nome=String(fd.get('nome')||'').trim(),q=parseInt(fd.get('qtd'),10),c=num(fd.get('custo')),pv=num(fd.get('pv')),mn=parseInt(fd.get('min'),10);
-      if(!nome)return {error:'Escreve o nome do produto.'};
-      if(DB.produtos.some(function(x){return x.id!==id&&x.nome.toLowerCase()===nome.toLowerCase();}))return {error:'Já existe um produto com este nome.'};
-      if(isNaN(q)||q<p.sold)return {error:'A quantidade comprada não pode ser menor que as '+p.sold+' unidades já vendidas.'};
-      if(isNaN(c)||c<0||isNaN(pv)||pv<0)return {error:'Confirma os preços.'};
+      if(!nome)return {error:T('Escreve o nome do produto.')};
+      if(DB.produtos.some(function(x){return x.id!==id&&x.nome.toLowerCase()===nome.toLowerCase();}))return {error:T('Já existe um produto com este nome.')};
+      if(isNaN(q)||q<p.sold)return {error:T('A quantidade comprada não pode ser menor que as {0} unidades já vendidas.',[p.sold])};
+      if(isNaN(c)||c<0||isNaN(pv)||pv<0)return {error:T('Confirma os preços.')};
       Object.assign(DB.produtos.find(function(x){return x.id===id;}),{nome:nome,qtdEntrada:q,custo:c,precoVenda:pv,minimo:isNaN(mn)||mn<0?0:mn});
-      save();render();toast('Produto atualizado.');
+      save();render();toast(T('Produto atualizado.'));
     }});
   },
   'lock':function(){lockApp();},
   'backup':function(){doBackup();},
+  'share-backup':function(){shareBackup();},
   'wipe':function(){
-    openModal({title:'Apagar todos os dados',body:'<p>Esta ação não pode ser desfeita. Escreve a tua senha para confirmar.</p>'+fld('Senha','pw',{id:'m-pw',type:'password',attrs:'autocomplete="current-password"'}),confirmText:'Apagar tudo',danger:true,onSubmit:async function(fd){
-      if(!(await verifyPw(String(fd.get('pw')||''))))return {error:'Senha incorreta.'};
-      DB={capital:{valor:0,data:today(),nota:'',ex:false},gastos:[],produtos:[],vendas:[],lastBackup:0};save();render();toast('Dados apagados.');
-    }});
+    confirmModal(T('Apagar todos os dados'),T('Esta ação não pode ser desfeita. Produtos, vendas, gastos e capital são apagados. A conta mantém-se.'),function(){
+      DB={capital:{valor:0,data:today(),nota:'',ex:false},gastos:[],produtos:[],vendas:[],lastBackup:0,idioma:DB.idioma};save();render();toast(T('Dados apagados.'));
+    },T('Apagar tudo'));
   }
 };
 document.addEventListener('click',function(e){
-  var t=e.target.closest('[data-tab],[data-act],[data-show],[data-close],[data-scrim]');if(!t)return;
+  var t=e.target.closest('[data-tab],[data-act],[data-show],[data-close],[data-scrim],[data-go]');if(!t)return;
   if(t.hasAttribute('data-scrim')){if(e.target===t)closeModal();return;}
   if(t.dataset.close!==undefined){closeModal();return;}
-  if(t.dataset.show){var i=document.getElementById(t.dataset.show);i.type=i.type==='password'?'text':'password';t.textContent=i.type==='password'?'Mostrar':'Ocultar';return;}
+  if(t.dataset.go){showAuth(t.dataset.go);return;}
+  if(t.dataset.show){var i=document.getElementById(t.dataset.show);i.type=i.type==='password'?'text':'password';t.textContent=i.type==='password'?T('Mostrar'):T('Ocultar');return;}
   if(t.dataset.tab){tab=t.dataset.tab;render();window.scrollTo(0,0);var c=document.querySelector('.tab[aria-current]');if(c)try{c.scrollIntoView({inline:'nearest',block:'nearest'});}catch(x){}return;}
   if(t.dataset.act&&ACTS[t.dataset.act])ACTS[t.dataset.act](t.dataset.id);
 });
 document.addEventListener('change',function(e){
   var t=e.target;
   if(t.id==='v-prod')onProdutoVenda();
-  if(t.id==='g-cat'){var o=t.value==='Outro';$('#g-req').textContent=o?'(obrigatória)':'(opcional)';}
+  if(t.id==='g-cat'){var o=t.value==='Outro';$('#g-req').textContent=o?T('(obrigatória)'):T('(opcional)');}
+  if(t.id==='x-lang'){setLang(t.value);DB.idioma=LANG;save();buildHeader();render();}
   if(t.id==='f-file'&&t.files&&t.files[0]){
     var file=t.files[0],rd=new FileReader();
     rd.onload=function(){
       try{
         var j=JSON.parse(rd.result),d=j&&j.dados;
         if(!d||!Array.isArray(d.produtos)||!Array.isArray(d.vendas)||!Array.isArray(d.gastos))throw new Error('x');
-        confirmModal('Restaurar cópia','Os dados atuais são substituídos pelos da cópia ('+d.produtos.length+' produtos, '+d.vendas.length+' vendas, '+d.gastos.length+' gastos).',function(){DB=normalize(d);DB.lastBackup=Date.now();save();render();toast('Cópia restaurada.');},'Restaurar');
-      }catch(x){toast('Este ficheiro não é uma cópia da JINOKA.');}
+        confirmModal(T('Restaurar cópia'),T('Os dados atuais são substituídos pelos da cópia ({0} produtos, {1} vendas, {2} gastos).',[d.produtos.length,d.vendas.length,d.gastos.length]),function(){DB=normalize(d);DB.lastBackup=Date.now();if(DB.idioma)setLang(DB.idioma);save();buildHeader();render();toast(T('Cópia restaurada.'));},T('Restaurar'));
+      }catch(x){toast(T('Este ficheiro não é uma cópia da JINOKA.'));}
     };
     rd.readAsText(file);t.value='';
   }
@@ -890,24 +929,33 @@ document.addEventListener('change',function(e){
 document.addEventListener('input',function(e){if(['v-pv','v-pr','v-qtd'].indexOf(e.target.id)>=0)updateVendaPreview();});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
 
-/* ---------- ecrãs de acesso: ligações ---------- */
-$('#l-forgot').addEventListener('click',function(){showAuth('a-recover');});
-$('#r-back').addEventListener('click',function(){showAuth('a-login');});
-$('#k-copy').addEventListener('click',function(){copyText($('#k-box').textContent,$('#k-box'));});
-$('#k-ok').addEventListener('change',function(){$('#k-go').disabled=!this.checked;});
-$('#k-go').addEventListener('click',function(){if(keyDone)keyDone();});
-
 /* ---------- arranque ---------- */
-(function init(){
-  if(!window.crypto||!crypto.subtle){
-    $('#auth').hidden=false;$('#a-setup').hidden=false;
-    $('#a-setup').innerHTML='<h1>Navegador não suportado</h1><p class="muted">Este navegador não permite proteger a senha. Abre a JINOKA num navegador atualizado.</p>';
+(async function init(){
+  if(!sb){
+    $('#auth').hidden=false;
+    $('#auth-in').innerHTML='<div class="card stack"><h1>'+T('Falta ligar o servidor')+'</h1><p class="muted">'+T('Abre o ficheiro index.html e cola o URL e a chave do teu projeto Supabase no início do código.')+'</p></div>';
     return;
   }
-  auth=readJSON(AUTH_KEY);
-  showAuth(auth&&auth.hash?'a-login':'a-setup');
+  sb.auth.onAuthStateChange(function(ev,session){
+    /* Não chamar o Supabase diretamente aqui dentro: usar setTimeout. */
+    if(ev==='PASSWORD_RECOVERY'){recovering=true;user=session&&session.user;setTimeout(function(){showAuth('a-reset');},0);return;}
+    if(ev==='SIGNED_IN'&&session&&!recovering&&!unlocked){user=session.user;setTimeout(enterApp,0);}
+    if(ev==='SIGNED_OUT'&&unlocked){user=null;DB=null;$('#main').innerHTML='';setTimeout(function(){showAuth('a-login');},0);}
+  });
+  if(/error_code|error_description/.test(location.hash)){
+    toast(T('O link expirou ou já foi usado. Pede um novo.'));
+    recovering=false;
+  }
+  var g=await sb.auth.getSession(),ses=g&&g.data&&g.data.session;
+  if(recovering){
+    if(ses){user=ses.user;showAuth('a-reset');}
+    else{showAuth('a-forgot');toast(T('O link expirou. Pede um novo.'));}
+    return;
+  }
+  if(ses){user=ses.user;await enterApp();if(!unlocked)showAuth('a-login');}
+  else showAuth('a-login');
 })();
 })();
 </script>
-
-</body></html>
+</body>
+</html>
